@@ -160,7 +160,9 @@
                     </ul>
                 </div>
                 <div class="lm-card">
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;" aria-label="Campus ambassador application form">
+                    @include('components.flash-message')
+                    <form method="post" action="{{ route('careers.submit') }}" class="lm-form" aria-label="Campus ambassador application form">
+                        @csrf
                         <input type="hidden" name="lm_career" value="1" />
                         <div class="lm-field-group two">
                             <div class="lm-field">
