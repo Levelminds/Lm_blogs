@@ -851,6 +851,10 @@
                 align-items: center;
             }
 
+            .lm-media-block--align-start {
+                align-items: start;
+            }
+
             @media (min-width: 992px) {
                 .lm-media-block {
                     grid-template-columns: repeat(2, minmax(0, 1fr));

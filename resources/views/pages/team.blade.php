@@ -41,24 +41,6 @@
         ],
     ];
 
-    $advisors = [
-        [
-            'name' => 'Ananya Rathi',
-            'role' => 'Advisor, Curriculum &amp; Assessments',
-            'bio' => 'Former academic dean who co-designs rubric libraries and classroom observation frameworks with our team.',
-        ],
-        [
-            'name' => 'Karan Bedi',
-            'role' => 'Advisor, Talent Strategy',
-            'bio' => 'Guides employer partnerships and ensures our workflows reflect hiring best practices across India.',
-        ],
-        [
-            'name' => 'Niharika Menon',
-            'role' => 'Advisor, Technology &amp; Security',
-            'bio' => 'Helps our engineering team maintain robust infrastructure, privacy safeguards, and accessibility benchmarks.',
-        ],
-    ];
-
     $values = [
         ['title' => 'Celebrate teachers', 'copy' => 'We amplify authentic classroom stories and create hiring journeys that honour educators.'],
         ['title' => 'Build with empathy', 'copy' => 'We co-create every feature with Educational Institutes and teachers, ensuring clarity and trust.'],
@@ -86,7 +68,7 @@
 
     <section class="lm-section lm-section--light" aria-labelledby="teamStoryTitle">
         <div class="container">
-            <div class="lm-media-block">
+            <div class="lm-media-block lm-media-block--align-start">
                 <div class="lm-stack">
                     <span class="lm-eyebrow">Our story</span>
                     <h2 id="teamStoryTitle">We started with a classroom problem</h2>
@@ -147,25 +129,6 @@
                         <div class="lm-icon-circle" aria-hidden="true">{{ $loop->iteration }}</div>
                         <h3>{{ $value['title'] }}</h3>
                         <p>{{ $value['copy'] }}</p>
-                    </article>
-                @endforeach
-            </div>
-        </div>
-    </section>
-
-    <section class="lm-section" aria-labelledby="teamAdvisorsTitle">
-        <div class="container">
-            <div class="lm-section__header lm-center">
-                <span class="lm-eyebrow">Advisors</span>
-                <h2 id="teamAdvisorsTitle">Guided by experienced partners</h2>
-                <p class="lm-lead">We collaborate with Educational Institute groups, teacher communities, and industry mentors to evolve our hiring playbooks.</p>
-            </div>
-            <div class="lm-grid lm-grid-3" aria-label="Advisor profiles">
-                @foreach ($advisors as $advisor)
-                    <article class="lm-profile-card">
-                        <h3>{{ $advisor['name'] }}</h3>
-                        <span class="lm-team-role">{{ $advisor['role'] }}</span>
-                        <p>{{ $advisor['bio'] }}</p>
                     </article>
                 @endforeach
             </div>
