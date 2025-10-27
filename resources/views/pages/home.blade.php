@@ -86,43 +86,6 @@
                 <div class="lm-hero-media">
                     <div class="lm-hero-ring" aria-hidden="true"></div>
                     <div class="lm-stack">
-                        <article class="lm-hero-slab" aria-label="Teacher workflow highlight">
-                            <span class="lm-badge">Teacher view</span>
-                            <div class="lm-hero-slab__header">
-                                <h3>Track every application</h3>
-                                <p>Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
-                            </div>
-                            <ul class="lm-hero-pipeline" role="list">
-                                <li class="lm-hero-pipeline__item is-active">
-                                    <div class="lm-hero-pipeline__stage">
-                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
-                                        <span>Shortlisted</span>
-                                    </div>
-                                    <span class="lm-hero-pipeline__meta">Interview confirmed</span>
-                                </li>
-                                <li class="lm-hero-pipeline__item">
-                                    <div class="lm-hero-pipeline__stage">
-                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
-                                        <span>Demo lesson</span>
-                                    </div>
-                                    <span class="lm-hero-pipeline__meta">Awaiting feedback</span>
-                                </li>
-                                <li class="lm-hero-pipeline__item">
-                                    <div class="lm-hero-pipeline__stage">
-                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
-                                        <span>Panel review</span>
-                                    </div>
-                                    <span class="lm-hero-pipeline__meta">Notes shared</span>
-                                </li>
-                                <li class="lm-hero-pipeline__item">
-                                    <div class="lm-hero-pipeline__stage">
-                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
-                                        <span>Offer</span>
-                                    </div>
-                                    <span class="lm-hero-pipeline__meta">Ready to sign</span>
-                                </li>
-                            </ul>
-                        </article>
                         <article class="lm-hero-slab lm-hero-slab-dark" aria-label="Educational Institute dashboard highlight">
                             <span class="lm-badge lm-badge--light">Educational Institute dashboard</span>
                             <h3>Guide every hiring step</h3>
