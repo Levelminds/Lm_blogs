@@ -10,13 +10,13 @@
 
 @section('content')
 <div class="lm-marketing">
-    <section class="lm-section lm-hero-section">
+    <section class="lm-section lm-section--dark">
         <div class="container">
             <div class="lm-hero lm-hero-grid">
-                <div class="lm-stack">
-                    <span class="lm-badge">Skill-first hiring platform</span>
+                <div class="lm-stack text-white">
+                    <span class="lm-badge lm-badge--light">Skill-first hiring platform</span>
                     <h1>Hiring that celebrates great teaching.</h1>
-                    <p class="lm-lead">LevelMinds connects Educational Institutions &amp; Companies and educators through transparent pipelines, collaborative workflows, and digital profiles that highlight classroom impact.</p>
+                    <p class="lm-lead text-white-50">LevelMinds connects Educational Institutions &amp; Companies and educators through transparent pipelines, collaborative workflows, and digital profiles that highlight classroom impact.</p>
                     <div class="lm-hero-actions">
                         <a class="btn btn-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign Up as Educational Institute</a>
                         <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign Up as Teacher</a>
@@ -118,7 +118,7 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section lm-section--light">
         <div class="container">
             <div class="lm-stack lm-center mb-5">
                 <div class="lm-section__header lm-center">

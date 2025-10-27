@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="lm-marketing">
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section">
         <div class="container">
             <div class="lm-stack lm-center">
                 <span class="lm-badge">Contact</span>
@@ -20,7 +20,7 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section">
         <div class="container">
             <div class="lm-contact-panels">
                 <div class="lm-card">

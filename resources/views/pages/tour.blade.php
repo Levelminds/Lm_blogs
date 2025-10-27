@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="lm-marketing">
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section">
         <div class="container">
             <div class="lm-stack lm-center">
                 <span class="lm-badge">Product tour</span>
@@ -24,7 +24,7 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section lm-section--light">
         <div class="container">
             <div class="lm-split">
                 <div class="lm-product-slider carousel slide" id="tourSpotlight" data-bs-ride="carousel">

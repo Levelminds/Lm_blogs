@@ -10,7 +10,7 @@
 
 @section('content')
 <div class="lm-marketing">
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section">
         <div class="container">
             <div class="lm-split">
                 <div class="lm-stack">
@@ -29,7 +29,7 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--muted">
+    <section class="lm-section lm-section--light">
         <div class="container">
             <div class="lm-feature-grid">
                 <article class="lm-card">
@@ -60,7 +60,7 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--surface" id="apply">
+    <section class="lm-section" id="apply">
         <div class="container">
             <div class="lm-contact-panels">
                 <div class="lm-card lm-card--raised">

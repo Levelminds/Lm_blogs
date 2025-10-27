@@ -10,17 +10,17 @@
 
 @section('content')
 <div class="lm-marketing">
-    <section class="lm-section lm-section--surface">
+    <section class="lm-section lm-section--dark">
         <div class="container">
             <div class="lm-stack">
-                <span class="lm-badge">Team</span>
+                <span class="lm-badge lm-badge--light">Team</span>
                 <h1>Meet the minds building LevelMinds</h1>
-                <p class="lm-lead">Based in Delhi, we are educators, operators, and technologists shaping transparent hiring journeys that honour great teaching.</p>
+                <p class="lm-lead lm-surface-note">Based in Delhi, we are educators, operators, and technologists shaping transparent hiring journeys that honour great teaching.</p>
             </div>
         </div>
     </section>
 
-    <section class="lm-section lm-section--muted">
+    <section class="lm-section lm-section--light">
         <div class="container">
             <div class="lm-split">
                 <div class="lm-stack">
