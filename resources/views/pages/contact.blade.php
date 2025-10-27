@@ -41,7 +41,9 @@
                     <span class="lm-eyebrow">Send a message</span>
                     <h2 id="contactFormTitle">Tell us how we can help</h2>
                     <p class="lm-lead">Share as much context as possible so our team can tailor the next steps. Fields marked with * are required.</p>
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;" aria-label="Contact form">
+                    @include('components.flash-message')
+                    <form method="post" action="{{ route('contact.submit') }}" class="lm-form" aria-label="Contact form">
+                        @csrf
                         <input type="hidden" name="lm_contact" value="1" />
                         <div class="lm-field">
                             <label for="name">Full Name *</label>

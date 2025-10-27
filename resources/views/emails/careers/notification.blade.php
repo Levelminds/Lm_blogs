@@ -1,8 +1,9 @@
 @component('mail::message')
-# New campus ambassador application
+# New campus ambassador application received
 
-A new campus ambassador application has been submitted.
+A new campus ambassador application has been submitted. Please acknowledge the applicant within two business days.
 
+@component('mail::panel')
 **Name:** {{ $data['fullname'] }}
 
 **Email:** {{ $data['email'] }}
@@ -23,4 +24,7 @@ A new campus ambassador application has been submitted.
 {{ $data['plan'] }}
 
 @endif
+@endcomponent
+
+Log the outreach in the CRM once a follow-up has been scheduled.
 @endcomponent
