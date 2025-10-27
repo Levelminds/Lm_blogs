@@ -41,7 +41,9 @@
                     <span class="lm-eyebrow">Send a message</span>
                     <h2 id="contactFormTitle">Tell us how we can help</h2>
                     <p class="lm-lead">Share as much context as possible so our team can tailor the next steps. Fields marked with * are required.</p>
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;" aria-label="Contact form">
+                    @include('components.flash-message')
+                    <form method="post" action="{{ route('contact.submit') }}" class="lm-form" aria-label="Contact form">
+                        @csrf
                         <input type="hidden" name="lm_contact" value="1" />
                         <div class="lm-field">
                             <label for="name">Full Name *</label>
@@ -80,14 +82,15 @@
                 <aside class="lm-contact-side" aria-labelledby="contactInfoTitle">
                     <div class="lm-card">
                         <h3 id="contactInfoTitle">Reach us directly</h3>
-                        <address class="mb-3">
-                            Delhi, India<br>
-                            <a href="mailto:support@levelminds.in">support@levelminds.in</a><br>
-                            Support hours: 10 AM &ndash; 6 PM IST
+                        <address class="mb-3 lm-stack">
+                            <span>Delhi, India</span>
+                            <a class="fw-semibold text-decoration-none text-reset" href="mailto:support@levelminds.in">support@levelminds.in</a>
+                            <a class="d-inline-flex align-items-center gap-2 fw-semibold text-decoration-none text-reset" href="tel:+917303835892">
+                                <span class="lm-eyebrow">Phone</span>
+                                <span>+91 73038 35892</span>
+                            </a>
+                            <span class="text-muted small">Support hours: 10 AM &ndash; 6 PM IST</span>
                         </address>
-                        <div class="lm-map-embed" aria-label="LevelMinds location">
-                            <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3503.432986590596!2d77.2090!3d28.6129!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x390cfd37d7a63ffb%3A0x9a3e1bdf4cf0a1d9!2sNew%20Delhi%2C%20Delhi%2C%20India!5e0!3m2!1sen!2sin!4v1717320000000" loading="lazy" referrerpolicy="no-referrer-when-downgrade" title="Map showing LevelMinds office in Delhi"></iframe>
-                        </div>
                     </div>
                     <div class="lm-card">
                         <h3>Program enquiries</h3>

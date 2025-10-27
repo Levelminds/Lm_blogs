@@ -18,6 +18,8 @@ class ContactFormRequest extends FormRequest
             'email' => ['required', 'email', 'max:255'],
             'subject' => ['nullable', 'string', 'max:255'],
             'message' => ['required', 'string'],
+            'organisation' => ['nullable', 'string', 'max:255'],
+            'phone' => ['nullable', 'string', 'max:50'],
         ];
     }
 }

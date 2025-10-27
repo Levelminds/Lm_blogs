@@ -22,24 +22,6 @@
         ['title' => 'Own the outcome', 'copy' => 'We celebrate autonomy, thoughtful experimentation, and accountability end to end.'],
     ];
 
-    $jobOpenings = [
-        [
-            'title' => 'Growth Marketing Manager',
-            'location' => 'Remote, India',
-            'type' => 'Full-time',
-            'summary' => 'Drive demand generation for Educational Institutes and teachers through campaigns, lifecycle journeys, and storytelling.',
-            'responsibilities' => ['Build multi-channel campaigns that highlight LevelMinds success stories', 'Collaborate with product to craft launch narratives', 'Measure performance and optimise nurture programs'],
-            'link' => 'mailto:support@levelminds.in?subject=Application%20-%20Growth%20Marketing%20Manager',
-        ],
-        [
-            'title' => 'Product Designer',
-            'location' => 'Delhi NCR / Remote',
-            'type' => 'Full-time',
-            'summary' => 'Design intuitive experiences for dashboards, scorecards, and communication tools that empower educators.',
-            'responsibilities' => ['Lead research sessions with teachers and hiring teams', 'Prototype and ship end-to-end product flows', 'Advocate for accessibility and evidence-first storytelling'],
-            'link' => 'mailto:support@levelminds.in?subject=Application%20-%20Product%20Designer',
-        ],
-    ];
 @endphp
 
 <div class="lm-marketing">
@@ -51,7 +33,7 @@
                     <h1 id="careersHeroTitle">Join a mission-first team building equitable hiring</h1>
                     <p class="lm-lead">We combine product craft, hiring expertise, and community partnerships to help teachers and Educational Institutes find the perfect match.</p>
                     <div class="lm-hero-actions" role="group" aria-label="Career actions">
-                        <a class="btn btn-primary" href="#open-roles">View open roles</a>
+                        <a class="btn btn-primary" href="#apply">Apply now</a>
                         <a class="btn btn-outline-primary" href="{{ url('/contact') }}">Talk to our team</a>
                     </div>
                 </div>
@@ -103,49 +85,6 @@
         </div>
     </section>
 
-    <section class="lm-section" id="open-roles" aria-labelledby="careersRolesTitle">
-        <div class="container">
-            <div class="lm-section__header lm-center">
-                <span class="lm-eyebrow">Open roles</span>
-                <h2 id="careersRolesTitle">Current opportunities</h2>
-                <p class="lm-lead">Explore roles across product, operations, and community. Don&rsquo;t see what you&rsquo;re looking for? Reach out anyway!</p>
-            </div>
-            @if (empty($jobOpenings))
-                <div class="lm-job-empty">
-                    <p class="mb-1">We don&rsquo;t have open roles right now.</p>
-                    <p class="mb-0">Leave your details at <a href="mailto:support@levelminds.in">support@levelminds.in</a> and we&rsquo;ll reach out when the next opportunity opens.</p>
-                </div>
-            @else
-                <div class="lm-grid lm-grid-2 lm-job-list">
-                    @foreach ($jobOpenings as $job)
-                        <details class="lm-job-card">
-                            <summary>
-                                <div>
-                                    <h3 class="mb-1">{{ $job['title'] }}</h3>
-                                    <div class="lm-job-meta">
-                                        <span class="lm-tag">{{ $job['type'] }}</span>
-                                        <span class="lm-tag">{{ $job['location'] }}</span>
-                                    </div>
-                                </div>
-                                <span aria-hidden="true">+</span>
-                            </summary>
-                            <div class="lm-job-card-content">
-                                <p>{{ $job['summary'] }}</p>
-                                <strong>Responsibilities</strong>
-                                <ul class="lm-list-check">
-                                    @foreach ($job['responsibilities'] as $responsibility)
-                                        <li>{{ $responsibility }}</li>
-                                    @endforeach
-                                </ul>
-                                <a class="btn btn-primary btn-sm align-self-start" href="{{ $job['link'] }}">Apply via email</a>
-                            </div>
-                        </details>
-                    @endforeach
-                </div>
-            @endif
-        </div>
-    </section>
-
     <section class="lm-section lm-section--muted" id="apply" aria-labelledby="careersApplyTitle">
         <div class="container">
             <div class="lm-contact-panels">
@@ -160,7 +99,9 @@
                     </ul>
                 </div>
                 <div class="lm-card">
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;" aria-label="Campus ambassador application form">
+                    @include('components.flash-message')
+                    <form method="post" action="{{ route('careers.submit') }}" class="lm-form" aria-label="Campus ambassador application form">
+                        @csrf
                         <input type="hidden" name="lm_career" value="1" />
                         <div class="lm-field-group two">
                             <div class="lm-field">
