@@ -144,14 +144,9 @@ class Blog extends Model
 
         $path = ltrim($value, '/');
 
-        if (Str::startsWith($path, 'storage/')) {
-            return asset($path);
-        }
-
-        foreach (['public/', 'app/public/'] as $prefix) {
-            if (Str::startsWith($path, $prefix)) {
+        foreach (['storage/', 'public/', 'app/public/'] as $prefix) {
+            while (Str::startsWith($path, $prefix)) {
                 $path = substr($path, strlen($prefix));
-                break;
             }
         }
 
