@@ -25,10 +25,15 @@
             height: 100%;
         }
         .hero-media img,
-        .hero-media video {
+        .hero-media video,
+        .hero-media iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        .hero-media .ratio {
+            width: 100%;
+            height: 100%;
         }
         .video-badge {
             position: absolute;
@@ -88,10 +93,18 @@
             border-top-right-radius: 24px;
         }
         .blog-card .card-img-wrap img,
-        .blog-card .card-img-wrap video {
+        .blog-card .card-img-wrap video,
+        .blog-card .card-img-wrap iframe {
             width: 100%;
             height: 220px;
             object-fit: cover;
+        }
+        .blog-card .card-img-wrap .ratio {
+            width: 100%;
+        }
+        .blog-card .card-img-wrap .ratio iframe {
+            height: 100%;
+            border: 0;
         }
         .blog-card .card-img-wrap .video-badge {
             top: 12px;
@@ -153,7 +166,13 @@
                                     <div class="col-lg-5 hero-media">
                                         @if ($post->thumbnail_url)
                                             <img src="{{ $post->thumbnail_url }}" alt="{{ $post->title }}">
-                                        @elseif ($post->is_video && $post->video_path)
+                                        @elseif ($post->is_video && $post->video_embed_url)
+                                            <div class="ratio ratio-16x9">
+                                                <iframe src="{{ $post->video_embed_url }}" title="{{ $post->title }} video"
+                                                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                        allowfullscreen loading="lazy"></iframe>
+                                            </div>
+                                        @elseif ($post->is_video && $post->video_stream_url)
                                             <video src="{{ $post->video_stream_url }}" muted playsinline loop></video>
                                         @else
                                             <img src="https://via.placeholder.com/720x520?text=LevelMinds+Blog" alt="{{ $post->title }}">
@@ -204,7 +223,13 @@
                                 <div class="card-img-wrap">
                                     @if ($highlight->thumbnail_url)
                                         <img src="{{ $highlight->thumbnail_url }}" alt="{{ $highlight->title }}">
-                                    @elseif ($highlight->is_video && $highlight->video_path)
+                                    @elseif ($highlight->is_video && $highlight->video_embed_url)
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="{{ $highlight->video_embed_url }}" title="{{ $highlight->title }} video"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen loading="lazy"></iframe>
+                                        </div>
+                                    @elseif ($highlight->is_video && $highlight->video_stream_url)
                                         <video src="{{ $highlight->video_stream_url }}" muted playsinline loop></video>
                                     @else
                                         <img src="https://via.placeholder.com/480x320?text=LevelMinds" alt="{{ $highlight->title }}">
@@ -264,7 +289,13 @@
                                 <div class="card-img-wrap">
                                     @if ($blog->thumbnail_url)
                                         <img src="{{ $blog->thumbnail_url }}" alt="{{ $blog->title }}">
-                                    @elseif ($blog->is_video && $blog->video_path)
+                                    @elseif ($blog->is_video && $blog->video_embed_url)
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="{{ $blog->video_embed_url }}" title="{{ $blog->title }} video"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen loading="lazy"></iframe>
+                                        </div>
+                                    @elseif ($blog->is_video && $blog->video_stream_url)
                                         <video src="{{ $blog->video_stream_url }}" muted playsinline loop></video>
                                     @else
                                         <img src="https://via.placeholder.com/640x420?text=LevelMinds" alt="{{ $blog->title }}">

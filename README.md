@@ -13,7 +13,8 @@ Laravel is a web application framework with expressive, elegant syntax. We belie
 
 ## Project Setup Notes
 
-- Run `php artisan storage:link --ansi --force` during deployments (and after fresh clones) to ensure the `public/storage` symlink exists. Uploaded blog thumbnails, OG images, and videos are saved on the `public` disk under directories such as `thumbnails/` and `og-images/`, and the symlink is required for these assets to be publicly accessible.
+- Run `php artisan storage:ensure-link --ansi --force` during deployments (and after fresh clones) to ensure the `public/storage` path is available. The command will create the symlink when the host allows it and will fall back to copying `storage/app/public` into `public/storage` when symlinks are blocked.
+- Configure `STORAGE_LINK_STRATEGY` in `.env` when deploying to hosts like Hostinger that disable `symlink()`. Supported values are `auto` (default, attempts a symlink then copies on failure), `copy` (always copy), and `skip` (do nothing if you manage the directory manually).
 - When verifying uploaded media paths in the database, expect relative paths like `thumbnails/...` that are resolved via the `public` filesystem disk.
 
 - [Simple, fast routing engine](https://laravel.com/docs/routing).

@@ -121,10 +121,15 @@
             height: 100%;
         }
         .hero-media img,
-        .hero-media video {
+        .hero-media video,
+        .hero-media iframe {
             width: 100%;
             height: 100%;
             object-fit: cover;
+        }
+        .hero-media .ratio {
+            width: 100%;
+            height: 100%;
         }
         .video-badge {
             position: absolute;
@@ -157,6 +162,37 @@
             display: block;
             width: 100%;
         }
+        .video-player-wrapper iframe {
+            border: 0;
+        }
+        .share-button,
+        .share-fallback-toggle {
+            display: inline-flex;
+            align-items: center;
+            gap: 0.5rem;
+            padding: 0.6rem 1.2rem;
+            border-radius: 999px;
+            border: 1px solid rgba(50, 72, 173, 0.35);
+            color: var(--brand-700);
+            background-color: rgba(50, 72, 173, 0.08);
+            text-decoration: none;
+        }
+        .share-button:hover,
+        .share-fallback-toggle:hover {
+            background-color: rgba(50, 72, 173, 0.18);
+            color: var(--brand-800);
+        }
+        .share-links {
+            border-radius: 16px;
+            border: 1px solid rgba(17, 28, 77, 0.08);
+            box-shadow: 0 12px 32px rgba(17, 28, 77, 0.12);
+        }
+        .insight-card .ratio {
+            width: 100%;
+        }
+        .insight-card .ratio iframe {
+            border: 0;
+        }
     </style>
 @endpush
 
@@ -167,7 +203,13 @@
                 <div class="col-lg-6 hero-media">
                     @if ($blog->thumbnail_url)
                         <img src="{{ $blog->thumbnail_url }}" alt="{{ $blog->title }}">
-                    @elseif ($blog->is_video && $blog->video_path)
+                    @elseif ($blog->is_video && $blog->video_embed_url)
+                        <div class="ratio ratio-16x9">
+                            <iframe src="{{ $blog->video_embed_url }}" title="{{ $blog->title }} video"
+                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                    allowfullscreen loading="lazy"></iframe>
+                        </div>
+                    @elseif ($blog->is_video && $blog->video_stream_url)
                         <video src="{{ $blog->video_stream_url }}" muted playsinline loop></video>
                     @else
                         <img src="https://via.placeholder.com/900x600?text=LevelMinds+Blog" alt="{{ $blog->title }}">
@@ -192,17 +234,52 @@
                         <span>{{ number_format($blog->likes) }} likes</span>
                     </div>
 
-                    <form action="{{ route('blog.like', $blog) }}" method="POST">
-                        @csrf
-                        <button type="submit" class="like-button border-0">
-                            <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
-                                 class="bi bi-heart-fill" viewBox="0 0 16 16">
-                                <path fill-rule="evenodd"
-                                      d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
-                            </svg>
-                            Appreciate this article
-                        </button>
-                    </form>
+                    <div class="d-flex flex-wrap align-items-center gap-3">
+                        <form action="{{ route('blog.like', $blog) }}" method="POST" class="m-0">
+                            @csrf
+                            <button type="submit" class="like-button border-0">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                     class="bi bi-heart-fill" viewBox="0 0 16 16">
+                                    <path fill-rule="evenodd"
+                                          d="M8 1.314C12.438-3.248 23.534 4.735 8 15-7.534 4.736 3.562-3.248 8 1.314"/>
+                                </svg>
+                                Appreciate this article
+                            </button>
+                        </form>
+                        <div class="share-actions position-relative">
+                            <button type="button" class="share-button border-0" data-share-trigger
+                                    data-share-title="{{ $blog->title }}"
+                                    data-share-url="{{ route('blog.show', $blog->slug) }}"
+                                    data-share-text="{{ $computedDescription }}"
+                                    aria-controls="article-share-links">
+                                <svg xmlns="http://www.w3.org/2000/svg" width="18" height="18" fill="currentColor"
+                                     class="bi bi-share" viewBox="0 0 16 16">
+                                    <path d="M13.5 1a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                    <path d="M4 8a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                    <path d="M13.5 11a1.5 1.5 0 1 0 0 3 1.5 1.5 0 0 0 0-3z"/>
+                                    <path d="M4.932 9.38a2.5 2.5 0 0 1 0-1.76l5.598-3.111a2.5 2.5 0 1 1 .47.881L5.4 8.5a2.5 2.5 0 0 1-.468.88z"/>
+                                </svg>
+                                Share this article
+                            </button>
+                            <div class="share-links bg-white mt-2 p-3 small" data-share-links id="article-share-links" hidden>
+                                <p class="fw-semibold mb-2 text-uppercase text-muted">Share via</p>
+                                @php
+                                    $shareUrl = urlencode(route('blog.show', $blog->slug));
+                                    $shareText = urlencode($blog->title);
+                                @endphp
+                                <ul class="list-unstyled mb-0">
+                                    <li class="mb-2"><a class="text-decoration-none" target="_blank" rel="noopener"
+                                                         href="https://www.facebook.com/sharer/sharer.php?u={{ $shareUrl }}">Facebook</a></li>
+                                    <li class="mb-2"><a class="text-decoration-none" target="_blank" rel="noopener"
+                                                         href="https://www.linkedin.com/sharing/share-offsite/?url={{ $shareUrl }}">LinkedIn</a></li>
+                                    <li class="mb-2"><a class="text-decoration-none" target="_blank" rel="noopener"
+                                                         href="https://twitter.com/intent/tweet?url={{ $shareUrl }}&text={{ $shareText }}">Twitter / X</a></li>
+                                    <li><a class="text-decoration-none" target="_blank" rel="noopener"
+                                           href="https://api.whatsapp.com/send?text={{ $shareText }}%20{{ $shareUrl }}">WhatsApp</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
                     @if(session('success'))
                         <div class="alert alert-success mt-3 mb-0">{{ session('success') }}</div>
                     @endif
@@ -210,13 +287,13 @@
             </div>
         </article>
 
-        @if($blog->is_video && ($blog->video_embed_url || $blog->video_path || $blog->video_stream_url))
+        @if($blog->is_video && ($blog->video_embed_url || $blog->video_stream_url))
             <div class="video-player-wrapper mb-5">
-                @if($blog->video_embed_url && filter_var($blog->video_embed_url, FILTER_VALIDATE_URL))
+                @if($blog->video_embed_url)
                     <div class="ratio ratio-16x9">
                         <iframe src="{{ $blog->video_embed_url }}" title="Video player" frameborder="0"
                                 allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-                                allowfullscreen></iframe>
+                                allowfullscreen loading="lazy"></iframe>
                     </div>
                 @elseif($blog->video_stream_url)
                     <video controls preload="metadata" poster="{{ $blog->thumbnail_url }}">
@@ -281,7 +358,13 @@
                                 <div class="position-relative">
                                     @if ($item->thumbnail_url)
                                         <img src="{{ $item->thumbnail_url }}" class="card-img-top" alt="{{ $item->title }}">
-                                    @elseif ($item->is_video && $item->video_path)
+                                    @elseif ($item->is_video && $item->video_embed_url)
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="{{ $item->video_embed_url }}" title="{{ $item->title }} video"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen loading="lazy"></iframe>
+                                        </div>
+                                    @elseif ($item->is_video && $item->video_stream_url)
                                         <video src="{{ $item->video_stream_url }}" muted playsinline loop class="w-100 rounded-top"></video>
                                     @else
                                         <img src="https://via.placeholder.com/480x320?text=LevelMinds" class="card-img-top" alt="{{ $item->title }}">
@@ -313,3 +396,59 @@
         @endif
     </section>
 @endsection
+
+@push('scripts')
+    <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const shareTrigger = document.querySelector('[data-share-trigger]');
+            const shareLinks = document.querySelector('[data-share-links]');
+
+            if (!shareTrigger || !shareLinks) {
+                return;
+            }
+
+            const shareData = {
+                title: shareTrigger.getAttribute('data-share-title') || document.title,
+                text: shareTrigger.getAttribute('data-share-text') || '',
+                url: shareTrigger.getAttribute('data-share-url') || window.location.href,
+            };
+
+            let shareApiAvailable = typeof navigator !== 'undefined' && typeof navigator.share === 'function';
+
+            const toggleFallback = () => {
+                const isHidden = shareLinks.hidden;
+                shareLinks.hidden = !isHidden;
+                shareTrigger.setAttribute('aria-expanded', String(isHidden));
+            };
+
+            shareTrigger.addEventListener('click', async function (event) {
+                event.preventDefault();
+
+                if (shareApiAvailable) {
+                    try {
+                        await navigator.share(shareData);
+                        return;
+                    } catch (error) {
+                        if (error && error.name === 'AbortError') {
+                            return;
+                        }
+                        shareApiAvailable = false;
+                    }
+                }
+
+                if (!shareTrigger.classList.contains('share-fallback-toggle')) {
+                    shareTrigger.classList.add('share-fallback-toggle');
+                    shareLinks.hidden = true;
+                }
+
+                toggleFallback();
+            });
+
+            if (!shareApiAvailable) {
+                shareTrigger.classList.add('share-fallback-toggle');
+                shareLinks.hidden = true;
+                shareTrigger.setAttribute('aria-expanded', 'false');
+            }
+        });
+    </script>
+@endpush
