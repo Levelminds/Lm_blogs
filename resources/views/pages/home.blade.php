@@ -88,8 +88,40 @@
                     <div class="lm-stack">
                         <article class="lm-hero-slab" aria-label="Teacher workflow highlight">
                             <span class="lm-badge">Teacher view</span>
-                            <h3>Track every application</h3>
-                            <p>Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
+                            <div class="lm-hero-slab__header">
+                                <h3>Track every application</h3>
+                                <p>Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
+                            </div>
+                            <ul class="lm-hero-pipeline" role="list">
+                                <li class="lm-hero-pipeline__item is-active">
+                                    <div class="lm-hero-pipeline__stage">
+                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
+                                        <span>Shortlisted</span>
+                                    </div>
+                                    <span class="lm-hero-pipeline__meta">Interview confirmed</span>
+                                </li>
+                                <li class="lm-hero-pipeline__item">
+                                    <div class="lm-hero-pipeline__stage">
+                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
+                                        <span>Demo lesson</span>
+                                    </div>
+                                    <span class="lm-hero-pipeline__meta">Awaiting feedback</span>
+                                </li>
+                                <li class="lm-hero-pipeline__item">
+                                    <div class="lm-hero-pipeline__stage">
+                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
+                                        <span>Panel review</span>
+                                    </div>
+                                    <span class="lm-hero-pipeline__meta">Notes shared</span>
+                                </li>
+                                <li class="lm-hero-pipeline__item">
+                                    <div class="lm-hero-pipeline__stage">
+                                        <span class="lm-hero-pipeline__dot" aria-hidden="true"></span>
+                                        <span>Offer</span>
+                                    </div>
+                                    <span class="lm-hero-pipeline__meta">Ready to sign</span>
+                                </li>
+                            </ul>
                         </article>
                         <article class="lm-hero-slab lm-hero-slab-dark" aria-label="Educational Institute dashboard highlight">
                             <span class="lm-badge lm-badge--light">Educational Institute dashboard</span>
@@ -102,15 +134,6 @@
                             <cite>Varun Chamoli, Founder</cite>
                         </article>
                     </div>
-                </div>
-            </div>
-            <div class="lm-stack mt-5">
-                <span class="lm-eyebrow text-white-50">Trusted by forward-thinking Educational Institutes</span>
-                <div class="lm-partner-logos text-white-50" aria-label="Partner Educational Institutes">
-                    <span>Delhi Public School</span>
-                    <span>Learning Tree</span>
-                    <span>Future Leaders Academy</span>
-                    <span>BrightMinds Network</span>
                 </div>
             </div>
         </div>
