@@ -51,10 +51,18 @@
             border-top-right-radius: 24px;
         }
         .blog-card .card-img-wrap img,
-        .blog-card .card-img-wrap video {
+        .blog-card .card-img-wrap video,
+        .blog-card .card-img-wrap iframe {
             width: 100%;
             height: 220px;
             object-fit: cover;
+        }
+        .blog-card .card-img-wrap .ratio {
+            width: 100%;
+        }
+        .blog-card .card-img-wrap .ratio iframe {
+            height: 100%;
+            border: 0;
         }
         .video-badge {
             position: absolute;
@@ -111,7 +119,13 @@
                                 <div class="card-img-wrap">
                                     @if ($blog->thumbnail_url)
                                         <img src="{{ $blog->thumbnail_url }}" alt="{{ $blog->title }}">
-                                    @elseif ($blog->is_video && $blog->video_path)
+                                    @elseif ($blog->is_video && $blog->video_embed_url)
+                                        <div class="ratio ratio-16x9">
+                                            <iframe src="{{ $blog->video_embed_url }}" title="{{ $blog->title }} video"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowfullscreen loading="lazy"></iframe>
+                                        </div>
+                                    @elseif ($blog->is_video && $blog->video_stream_url)
                                         <video src="{{ $blog->video_stream_url }}" muted playsinline loop></video>
                                     @else
                                         <img src="https://via.placeholder.com/640x420?text=LevelMinds" alt="{{ $blog->title }}">
