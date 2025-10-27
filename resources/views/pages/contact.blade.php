@@ -53,8 +53,11 @@
                                 <input id="email" name="email" type="email" required aria-required="true" autocomplete="email">
                             </div>
                             <div class="lm-field">
-                                <label for="subject">Subject</label>
-                                <input id="subject" name="subject" type="text" placeholder="General inquiry">
+                                <label for="contact-subject">Subject</label>
+                                <input id="contact-subject" name="subject" type="text" value="{{ old('subject') }}" placeholder="General inquiry">
+                                @error('subject')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="lm-field">

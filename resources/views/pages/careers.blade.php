@@ -174,8 +174,11 @@
                         </div>
                         <div class="lm-field-group two">
                             <div class="lm-field">
-                                <label for="phone">Phone / WhatsApp</label>
-                                <input id="phone" name="phone" type="text">
+                                <label for="career-phone">Phone / WhatsApp</label>
+                                <input id="career-phone" name="phone" type="text" value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="lm-field">
                                 <label for="college">College / University *</label>
@@ -183,12 +186,18 @@
                             </div>
                         </div>
                         <div class="lm-field">
-                            <label for="linkedin">LinkedIn Profile</label>
-                            <input id="linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/you">
+                            <label for="career-linkedin">LinkedIn Profile</label>
+                            <input id="career-linkedin" name="linkedin" type="url" value="{{ old('linkedin') }}" placeholder="https://linkedin.com/in/you">
+                            @error('linkedin')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="lm-field">
-                            <label for="plan">How will you help teachers find opportunities?</label>
-                            <textarea id="plan" name="plan" rows="5" placeholder="Share your plan, student communities, or past experience"></textarea>
+                            <label for="career-plan">How will you help teachers find opportunities?</label>
+                            <textarea id="career-plan" name="plan" rows="5" placeholder="Share your plan, student communities, or past experience">{{ old('plan') }}</textarea>
+                            @error('plan')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary" type="submit">Submit application</button>
                     </form>
