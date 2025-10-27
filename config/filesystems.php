@@ -17,6 +17,20 @@ return [
 
     /*
     |--------------------------------------------------------------------------
+    | Storage Link Strategy
+    |--------------------------------------------------------------------------
+    |
+    | Controls how the application should expose the public storage directory
+    | during deployment. The value may be set to "auto", "copy", or "skip".
+    | When set to "auto" the application will attempt to create a symbolic
+    | link and fall back to copying the storage contents if that fails.
+    |
+    */
+
+    'storage_link_strategy' => env('STORAGE_LINK_STRATEGY', 'auto'),
+
+    /*
+    |--------------------------------------------------------------------------
     | Filesystem Disks
     |--------------------------------------------------------------------------
     |

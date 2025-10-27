@@ -69,7 +69,9 @@ class Blog extends Model
     public function getVideoStreamUrlAttribute(): ?string
     {
         if ($this->external_video_url) {
-            return $this->external_video_url;
+            return $this->isStreamableFileUrl($this->external_video_url)
+                ? $this->external_video_url
+                : null;
         }
 
         return $this->resolvePublicAssetUrl($this->video_path);
@@ -77,7 +79,7 @@ class Blog extends Model
 
     public function getVideoEmbedUrlAttribute(): ?string
     {
-        if (! $this->external_video_url) {
+        if (! $this->external_video_url || $this->isStreamableFileUrl($this->external_video_url)) {
             return null;
         }
 
@@ -157,5 +159,30 @@ class Blog extends Model
         } while ($path !== $originalPath);
 
         return Storage::disk('public')->url($path);
+    }
+
+    protected function isStreamableFileUrl(string $url): bool
+    {
+        if (! filter_var($url, FILTER_VALIDATE_URL)) {
+            return false;
+        }
+
+        $path = parse_url($url, PHP_URL_PATH) ?? '';
+
+        if (! $path) {
+            return false;
+        }
+
+        $extensions = ['.mp4', '.webm', '.ogg', '.ogv', '.mov', '.m4v', '.m3u8'];
+
+        $path = strtolower($path);
+
+        foreach ($extensions as $extension) {
+            if (str_ends_with($path, $extension)) {
+                return true;
+            }
+        }
+
+        return false;
     }
 }
