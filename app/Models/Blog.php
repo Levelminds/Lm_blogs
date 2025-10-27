@@ -144,11 +144,17 @@ class Blog extends Model
 
         $path = ltrim($value, '/');
 
-        foreach (['storage/', 'public/', 'app/public/'] as $prefix) {
-            while (Str::startsWith($path, $prefix)) {
-                $path = substr($path, strlen($prefix));
+        $prefixes = ['storage/', 'public/', 'app/public/'];
+
+        do {
+            $originalPath = $path;
+
+            foreach ($prefixes as $prefix) {
+                if (Str::startsWith($path, $prefix)) {
+                    $path = substr($path, strlen($prefix));
+                }
             }
-        }
+        } while ($path !== $originalPath);
 
         return Storage::disk('public')->url($path);
     }
