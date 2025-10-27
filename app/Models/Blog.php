@@ -63,29 +63,7 @@ class Blog extends Model
 
     public function getThumbnailUrlAttribute(): ?string
     {
-        if (! $this->thumbnail) {
-            return null;
-        }
-
-        if (str_starts_with($this->thumbnail, 'http')) {
-            return $this->thumbnail;
-        }
-
-        $path = ltrim($this->thumbnail, '/');
-
-        if (str_starts_with($path, 'storage/')) {
-            return asset($path);
-        }
-
-        if (str_starts_with($path, 'public/')) {
-            return Storage::url(substr($path, strlen('public/')));
-        }
-
-        if (str_starts_with($path, 'app/public/')) {
-            return Storage::url(substr($path, strlen('app/public/')));
-        }
-
-        return Storage::url($path);
+        return $this->resolvePublicAssetUrl($this->thumbnail);
     }
 
     public function getVideoStreamUrlAttribute(): ?string
@@ -94,11 +72,7 @@ class Blog extends Model
             return $this->external_video_url;
         }
 
-        if ($this->video_path) {
-            return Storage::url($this->video_path);
-        }
-
-        return null;
+        return $this->resolvePublicAssetUrl($this->video_path);
     }
 
     public function getVideoEmbedUrlAttribute(): ?string
@@ -132,29 +106,7 @@ class Blog extends Model
 
     public function getOgImageUrlAttribute(): ?string
     {
-        if (! $this->og_image) {
-            return $this->thumbnail_url;
-        }
-
-        if (str_starts_with($this->og_image, 'http')) {
-            return $this->og_image;
-        }
-
-        $path = ltrim($this->og_image, '/');
-
-        if (str_starts_with($path, 'storage/')) {
-            return asset($path);
-        }
-
-        if (str_starts_with($path, 'public/')) {
-            return Storage::url(substr($path, strlen('public/')));
-        }
-
-        if (str_starts_with($path, 'app/public/')) {
-            return Storage::url(substr($path, strlen('app/public/')));
-        }
-
-        return Storage::url($path);
+        return $this->resolvePublicAssetUrl($this->og_image, $this->thumbnail_url);
     }
 
     public function getIsVideoAttribute(): bool
@@ -178,5 +130,31 @@ class Blog extends Model
             $query->whereNull('published_at')
                 ->orWhere('published_at', '<=', now());
         });
+    }
+
+    protected function resolvePublicAssetUrl(?string $value, ?string $fallback = null): ?string
+    {
+        if (! $value) {
+            return $fallback;
+        }
+
+        if (Str::startsWith($value, ['http://', 'https://', '//'])) {
+            return $value;
+        }
+
+        $path = ltrim($value, '/');
+
+        if (Str::startsWith($path, 'storage/')) {
+            return asset($path);
+        }
+
+        foreach (['public/', 'app/public/'] as $prefix) {
+            if (Str::startsWith($path, $prefix)) {
+                $path = substr($path, strlen($prefix));
+                break;
+            }
+        }
+
+        return Storage::disk('public')->url($path);
     }
 }
