@@ -128,10 +128,10 @@
                             <h3>Guide every hiring step</h3>
                             <p>Insights, reminders, and candidate notes stay together so leadership teams move quickly with clarity.</p>
                         </article>
-                        <article class="lm-card lm-card--dark" aria-label="Hero testimonial">
+                        <article class="lm-card bg-white text-dark" aria-label="Hero testimonial">
                             <span class="lm-badge lm-badge--light">In their words</span>
-                            <blockquote class="mb-2">&ldquo;LevelMinds brings visibility to every conversation and gives us the confidence to make the right hire.&rdquo;</blockquote>
-                            <cite>Varun Chamoli, Founder</cite>
+                            <blockquote class="mb-2 text-dark">&ldquo;LevelMinds brings visibility to every conversation and gives us the confidence to make the right hire.&rdquo;</blockquote>
+                            <cite class="text-dark">Varun Chamoli, Founder</cite>
                         </article>
                     </div>
                 </div>
