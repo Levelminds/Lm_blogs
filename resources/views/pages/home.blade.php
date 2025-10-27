@@ -9,125 +9,173 @@
 @include('components.marketing.styles')
 
 @section('content')
+@php
+    $homeMetrics = [
+        ['value' => '30+', 'label' => 'Partner Educational Institutions'],
+        ['value' => '50+', 'label' => 'Verified teacher profiles'],
+        ['value' => '10+', 'label' => 'Interviews scheduled each month'],
+    ];
+
+    $homeFeatures = [
+        [
+            'title' => 'Digital evidence portfolios',
+            'description' => 'Showcase lesson plans, classroom walkthroughs, and certifications in a profile that travels with every application.',
+            'bullets' => ['Shareable profile link', 'Verified credentials &amp; artefacts', 'Rich media uploads'],
+        ],
+        [
+            'title' => 'Guided hiring workspaces',
+            'description' => 'Give leadership teams and educators a focused dashboard with the stages, filters, and reminders they need to stay in sync.',
+            'bullets' => ['Role-ready pipelines', 'Progress tracking for teachers', 'Automated nudges and alerts'],
+        ],
+        [
+            'title' => 'Analytics that drive decisions',
+            'description' => 'Understand pipeline health, equity metrics, and response times to keep every hire on track.',
+            'bullets' => ['Time-to-hire insights', 'Source performance dashboards', 'Diversity and inclusion views'],
+        ],
+    ];
+
+    $homeWorkflow = [
+        ['title' => 'Activate your hiring hub', 'copy' => 'Set up scorecards, intake forms, and interview panels that mirror the way your Educational Institute recruits.'],
+        ['title' => 'Invite teachers to apply', 'copy' => 'Share curated roles and allow educators to upload evidence-rich portfolios in minutes.'],
+        ['title' => 'Collaborate on evaluations', 'copy' => 'Collect rubric-aligned feedback, compare notes, and keep an audit trail without spreadsheets.'],
+        ['title' => 'Make confident offers', 'copy' => 'Trigger reminders, send offers, and capture acceptance with transparent communication.'],
+    ];
+
+    $homeTestimonials = [
+        [
+            'quote' => 'LevelMinds keeps every stakeholder aligned. We can see classroom evidence, schedule interviews, and move quickly with confidence.',
+            'name' => 'Anita Sharma',
+            'role' => 'Principal, Delhi Public School',
+        ],
+        [
+            'quote' => 'As a teacher I always know what is next. The dashboard gives me clarity and the team celebrates my strengths.',
+            'name' => 'Ritu Verma',
+            'role' => 'Math Educator',
+        ],
+    ];
+
+    $homeHighlights = [
+        ['value' => '96%', 'label' => 'Educators report smoother interview coordination'],
+        ['value' => '4.8/5', 'label' => 'Average satisfaction from leadership teams'],
+        ['value' => '2x', 'label' => 'Faster shortlist-to-offer timeline'],
+    ];
+@endphp
+
 <div class="lm-marketing">
-    <section class="lm-section lm-section--dark">
+    <section class="lm-section lm-section--dark" aria-labelledby="homeHeroTitle">
         <div class="container">
             <div class="lm-hero lm-hero-grid">
                 <div class="lm-stack text-white">
                     <span class="lm-badge lm-badge--light">Skill-first hiring platform</span>
-                    <h1>Hiring that celebrates great teaching.</h1>
-                    <p class="lm-lead text-white-50">LevelMinds connects Educational Institutions &amp; Companies and educators through transparent pipelines, collaborative workflows, and digital profiles that highlight classroom impact.</p>
-                    <div class="lm-hero-actions">
-                        <a class="btn btn-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign Up as Educational Institute</a>
-                        <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign Up as Teacher</a>
+                    <h1 id="homeHeroTitle">Hiring that celebrates great teaching.</h1>
+                    <p class="lm-lead text-white-50">LevelMinds connects Educational Institutes &amp; Companies and educators through transparent pipelines, collaborative workflows, and digital profiles that highlight classroom impact.</p>
+                    <div class="lm-hero-actions" role="group" aria-label="Primary actions">
+                        <a class="btn btn-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign up as Educational Institute</a>
+                        <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign up as teacher</a>
+                        <a class="btn btn-outline-light" href="{{ url('/tour') }}">View product tour</a>
                     </div>
-                    <dl class="lm-metric-grid">
-                        <div class="lm-metric">
-                            <dt>Partner Educational Institutions</dt>
-                            <dd>30+</dd>
-                        </div>
-                        <div class="lm-metric">
-                            <dt>Teacher profiles</dt>
-                            <dd>50+</dd>
-                        </div>
-                        <div class="lm-metric">
-                            <dt>Interviews scheduled</dt>
-                            <dd>10+</dd>
-                        </div>
-                    </dl>
+                    <div class="lm-hero-stats" role="list">
+                        @foreach ($homeMetrics as $metric)
+                            <div class="lm-hero-stat" role="listitem">
+                                <strong>{{ $metric['value'] }}</strong>
+                                <span>{{ $metric['label'] }}</span>
+                            </div>
+                        @endforeach
+                    </div>
                 </div>
                 <div class="lm-hero-media">
-                    <div class="lm-hero-ring"></div>
-                    <div class="lm-hero-slabs">
-                        <article class="lm-hero-slab">
+                    <div class="lm-hero-ring" aria-hidden="true"></div>
+                    <div class="lm-stack">
+                        <article class="lm-hero-slab" aria-label="Teacher workflow highlight">
                             <span class="lm-badge">Teacher view</span>
                             <h3>Track every application</h3>
                             <p>Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
                         </article>
-                        <article class="lm-hero-slab lm-hero-slab-dark">
-                            <span class="lm-badge lm-badge--light">Educational Institutions dashboard</span>
+                        <article class="lm-hero-slab lm-hero-slab-dark" aria-label="Educational Institute dashboard highlight">
+                            <span class="lm-badge lm-badge--light">Educational Institute dashboard</span>
                             <h3>Guide every hiring step</h3>
-                            <p>Insights, reminders, and candidate notes stay together so Educational Institutions teams move quickly with clarity.</p>
+                            <p>Insights, reminders, and candidate notes stay together so leadership teams move quickly with clarity.</p>
+                        </article>
+                        <article class="lm-card lm-card--dark" aria-label="Hero testimonial">
+                            <span class="lm-badge lm-badge--light">In their words</span>
+                            <blockquote class="mb-2">&ldquo;LevelMinds brings visibility to every conversation and gives us the confidence to make the right hire.&rdquo;</blockquote>
+                            <cite>Varun Chamoli, Founder</cite>
                         </article>
                     </div>
                 </div>
             </div>
-        </div>
-    </section>
-
-    <section class="lm-section lm-section--muted">
-        <div class="container">
-            <div class="lm-stack lm-center">
-                <div class="lm-section__header lm-center">
-                    <span class="lm-eyebrow">Why Educational Institutions and teachers choose us</span>
-                    <h2>Every workflow matches the classroom reality</h2>
-                    <p class="lm-lead">Built with Educational Institutions leaders and educators, LevelMinds organises hiring around skills, collaboration, and trust.</p>
-                </div>
-                <div class="lm-feature-grid">
-                    <article class="lm-card">
-                        <h3>Digital portfolios</h3>
-                        <p>Showcase lesson plans, classroom videos, and certifications in a profile that travels with every application.</p>
-                        <ul class="lm-list-check">
-                            <li>Shareable profile link</li>
-                            <li>Verified credentials</li>
-                            <li>Rich media uploads</li>
-                        </ul>
-                    </article>
-                    <article class="lm-card">
-                        <h3>Educational Institutions &amp; teacher dashboards</h3>
-                        <p>Give leadership teams and educators a focused dashboard with the stages, filters, and reminders they need to stay in sync.</p>
-                        <ul class="lm-list-check">
-                            <li>Role-ready pipelines</li>
-                            <li>Progress tracking for teachers</li>
-                            <li>Automated nudges and alerts</li>
-                        </ul>
-                    </article>
+            <div class="lm-stack mt-5">
+                <span class="lm-eyebrow text-white-50">Trusted by forward-thinking Educational Institutes</span>
+                <div class="lm-partner-logos text-white-50" aria-label="Partner Educational Institutes">
+                    <span>Delhi Public School</span>
+                    <span>Learning Tree</span>
+                    <span>Future Leaders Academy</span>
+                    <span>BrightMinds Network</span>
                 </div>
             </div>
         </div>
     </section>
 
-    <section class="lm-section">
+    <section class="lm-section lm-section--muted" aria-labelledby="homeWhyTitle">
         <div class="container">
-            <div class="lm-split">
+            <div class="lm-section__header lm-center">
+                <span class="lm-eyebrow">Why Educational Institutes and teachers choose us</span>
+                <h2 id="homeWhyTitle">Every workflow matches the classroom reality</h2>
+                <p class="lm-lead">Built with Educational Institute leaders and educators, LevelMinds organises hiring around skills, collaboration, and trust.</p>
+            </div>
+            <div class="lm-grid lm-grid-3">
+                @foreach ($homeFeatures as $feature)
+                    <article class="lm-card" aria-label="{{ $feature['title'] }}">
+                        <div class="lm-icon-circle" aria-hidden="true">{{ $loop->iteration }}</div>
+                        <h3>{{ $feature['title'] }}</h3>
+                        <p>{{ $feature['description'] }}</p>
+                        <ul class="lm-list-check">
+                            @foreach ($feature['bullets'] as $bullet)
+                                <li>{{ $bullet }}</li>
+                            @endforeach
+                        </ul>
+                    </article>
+                @endforeach
+            </div>
+        </div>
+    </section>
+
+    <section class="lm-section" aria-labelledby="homeWorkflowTitle">
+        <div class="container">
+            <div class="lm-media-block">
                 <div class="lm-stack">
                     <span class="lm-eyebrow">How it works</span>
-                    <h2>Dashboards that keep every hire on track</h2>
-                    <p class="lm-lead">Launch a Company dashboard, connect teacher profiles, and follow each application with transparent updates.</p>
-                    <a class="btn btn-primary btn-sm align-self-start" href="{{ url('/tour') }}">Explore the product tour</a>
+                    <h2 id="homeWorkflowTitle">Dashboards that keep every hire on track</h2>
+                    <p class="lm-lead">Launch a shared workspace, connect teacher profiles, and follow each application with transparent updates.</p>
+                    <div class="lm-step-grid" role="list">
+                        @foreach ($homeWorkflow as $step)
+                            <div class="lm-step-card" role="listitem">
+                                <h3>{{ $step['title'] }}</h3>
+                                <p>{{ $step['copy'] }}</p>
+                            </div>
+                        @endforeach
+                    </div>
+                    <div class="lm-hero-actions" role="group" aria-label="Workflow actions">
+                        <a class="btn btn-primary" href="{{ url('/tour') }}">Explore the product tour</a>
+                        <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Create your account</a>
+                    </div>
                 </div>
-                <ol class="lm-list-steps">
-                    <li>
-                        <h3>Activate your Company dashboard</h3>
-                        <p>Tailor hiring stages, focus areas, and intake forms so your pipeline mirrors the way your Company recruits.</p>
-                    </li>
-                    <li>
-                        <h3>Share roles with teachers</h3>
-                        <p>Invite educators to dedicated teacher dashboards where they can submit profiles and track their status.</p>
-                    </li>
-                    <li>
-                        <h3>Review progress in real time</h3>
-                        <p>Filter candidates, capture evidence, and collaborate on feedback without losing history or context.</p>
-                    </li>
-                    <li>
-                        <h3>Hire with full visibility</h3>
-                        <p>Send offers, trigger reminders, and keep every stakeholder aligned from shortlist to acceptance.</p>
-                    </li>
-                </ol>
+                <figure>
+                    <img src="https://levelminds.in/assets/img/tour-3.jpg" alt="Screenshot of the LevelMinds pipeline dashboard">
+                    <figcaption class="visually-hidden">Pipeline dashboard showcasing hiring stages and candidate progress.</figcaption>
+                </figure>
             </div>
         </div>
     </section>
 
-    <section class="lm-section lm-section--light">
+    <section class="lm-section lm-section--light" aria-labelledby="homeSpotlightTitle">
         <div class="container">
-            <div class="lm-stack lm-center mb-5">
-                <div class="lm-section__header lm-center">
-                    <span class="lm-eyebrow">Product spotlight</span>
-                    <h2>Dashboards built for Educational Institutions and teachers</h2>
-                    <p class="lm-lead">See how LevelMinds keeps hiring data visible with dedicated views for leadership and educators.</p>
-                </div>
+            <div class="lm-section__header lm-center">
+                <span class="lm-eyebrow">Product spotlight</span>
+                <h2 id="homeSpotlightTitle">Dashboards built for leadership and educators</h2>
+                <p class="lm-lead">See how LevelMinds keeps hiring data visible with dedicated views for decision-makers and teachers.</p>
             </div>
-            <div class="lm-product-slider carousel slide" id="homeSpotlight" data-bs-ride="carousel">
+            <div class="lm-product-slider carousel slide" id="homeSpotlight" data-bs-ride="carousel" aria-label="Platform screenshots">
                 <div class="carousel-indicators">
                     @for ($i = 0; $i < 7; $i++)
                         <button type="button" data-bs-target="#homeSpotlight" data-bs-slide-to="{{ $i }}" @if($i === 0) class="active" aria-current="true" @endif aria-label="Slide {{ $i + 1 }}"></button>
@@ -175,17 +223,45 @@
         </div>
     </section>
 
-    <section class="lm-section lm-section--dark">
+    <section class="lm-section" aria-labelledby="homeTestimonialsTitle">
+        <div class="container">
+            <div class="lm-split">
+                <div class="lm-stack">
+                    <span class="lm-eyebrow">Proof in the classroom</span>
+                    <h2 id="homeTestimonialsTitle">Communities growing with LevelMinds</h2>
+                    <p class="lm-lead">Hiring teams and educators use LevelMinds to align on expectations, capture classroom impact, and reduce time-to-offer.</p>
+                    <div class="lm-highlight-grid" role="list">
+                        @foreach ($homeHighlights as $highlight)
+                            <div class="lm-highlight-card" role="listitem">
+                                <strong>{{ $highlight['value'] }}</strong>
+                                <span>{{ $highlight['label'] }}</span>
+                            </div>
+                        @endforeach
+                    </div>
+                </div>
+                <div class="lm-testimonial-grid" aria-label="Testimonials">
+                    @foreach ($homeTestimonials as $testimonial)
+                        <article class="lm-testimonial-card">
+                            <blockquote>&ldquo;{{ $testimonial['quote'] }}&rdquo;</blockquote>
+                            <cite>{{ $testimonial['name'] }} &mdash; {{ $testimonial['role'] }}</cite>
+                        </article>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section class="lm-section lm-section--dark" aria-labelledby="homeSupportTitle">
         <div class="container">
             <div class="lm-split">
                 <div class="lm-quote-card">
                     <span class="lm-badge lm-badge--light">Founder insight</span>
-                    <blockquote>&ldquo;We designed LevelMinds so that every teacher knows where they stand and every Company can hire with confidence.&rdquo;</blockquote>
+                    <blockquote>&ldquo;We designed LevelMinds so that every teacher knows where they stand and every Educational Institute can hire with confidence.&rdquo;</blockquote>
                     <cite>Varun Chamoli, Founder</cite>
                 </div>
                 <div class="lm-card lm-card--dark">
-                    <h3>Built for the classroom</h3>
-                    <p>We partner with forward-thinking Educational Institutions across India to co-create playbooks that highlight teaching excellence.</p>
+                    <h3 id="homeSupportTitle">Built for the classroom</h3>
+                    <p>We partner with forward-thinking Educational Institutes across India to co-create playbooks that highlight teaching excellence.</p>
                     <ul class="lm-list-check">
                         <li>Context-rich candidate profiles</li>
                         <li>Evidence-backed evaluations</li>
@@ -200,12 +276,12 @@
         <div class="container">
             <div class="lm-cta-banner">
                 <div class="lm-stack">
-                    <h2>Ready to match great teachers with the right Educational Institutions?</h2>
-                    <p class="lm-lead">Create your LevelMinds dashboard and start connecting teachers with the right Educational Institutions.</p>
+                    <h2>Ready to match great teachers with the right Educational Institutes?</h2>
+                    <p class="lm-lead">Create your LevelMinds dashboard and start connecting teachers with the right Educational Institutes.</p>
                 </div>
-                <div class="lm-cta-actions">
+                <div class="lm-cta-actions" role="group" aria-label="Final call to action">
                     <a class="btn btn-primary" href="{{ url('/contact') }}">Talk to our team</a>
-                    <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign Up</a>
+                    <a class="btn btn-outline-primary" href="https://lmap.in/signup" target="_blank" rel="noopener">Sign up</a>
                 </div>
             </div>
         </div>

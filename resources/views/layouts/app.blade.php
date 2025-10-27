@@ -98,8 +98,14 @@
 
         body {
             font-family: 'Manrope', sans-serif;
+        }
+
+        .lm-root {
             background-color: var(--neutral-100);
             color: var(--neutral-900);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
         }
 
         .site-navbar {
@@ -118,6 +124,23 @@
             color: var(--brand-700);
         }
 
+        .skip-link {
+            position: absolute;
+            left: -999px;
+            top: 0;
+            padding: 0.75rem 1.25rem;
+            background: var(--brand-700);
+            color: #fff;
+            border-radius: 999px;
+            transition: transform 0.3s ease;
+            z-index: 9999;
+        }
+
+        .skip-link:focus {
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
         .btn-primary {
             background-color: var(--brand-700);
             border-color: var(--brand-700);
@@ -128,6 +151,19 @@
             border-color: var(--brand-800);
         }
 
+        .btn-outline-primary {
+            color: var(--brand-700);
+            border-color: rgba(50, 72, 173, 0.4);
+            background-color: rgba(255, 255, 255, 0.7);
+        }
+
+        .btn-outline-primary:hover,
+        .btn-outline-primary:focus {
+            color: #fff;
+            background-color: var(--brand-700);
+            border-color: var(--brand-700);
+        }
+
         footer {
             background: var(--surface);
             color: var(--neutral-600);
@@ -135,10 +171,15 @@
             padding: 2rem 0;
             margin-top: 4rem;
         }
+
+        main {
+            flex: 1 1 auto;
+        }
     </style>
 </head>
-<body>
-    <nav class="navbar navbar-expand-lg site-navbar sticky-top py-3">
+<body class="lm-root">
+    <a class="skip-link" href="#mainContent">Skip to main content</a>
+    <nav class="navbar navbar-expand-lg site-navbar sticky-top py-3" role="navigation" aria-label="Primary">
         <div class="container">
             <a class="navbar-brand d-flex align-items-center fw-bold text-decoration-none" href="{{ url('/') }}">
                 <img src="{{ asset('images/branding/logo.svg') }}" alt="LevelMinds logo" class="me-2" style="height:36px" onerror="this.remove();">
@@ -165,16 +206,7 @@
         </div>
     </nav>
 
-    <main>
-        @if (session('status'))
-            <div class="py-3">
-                <div class="container">
-                    <div class="alert alert-success mb-0" role="alert">
-                        {{ session('status') }}
-                    </div>
-                </div>
-            </div>
-        @endif
+    <main id="mainContent" tabindex="-1">
         @yield('content')
     </main>
 
