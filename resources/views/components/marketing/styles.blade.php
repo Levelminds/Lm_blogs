@@ -672,6 +672,8 @@
                 border-radius: var(--lm-radius-md);
                 padding: 1.6rem;
                 box-shadow: var(--lm-shadow-sm);
+                display: grid;
+                gap: 1.25rem;
             }
 
             .lm-hero-slab.lm-hero-slab-dark {
@@ -679,6 +681,60 @@
                 color: #fff;
                 box-shadow: none;
                 border: 1px solid rgba(255, 255, 255, 0.18);
+            }
+
+            .lm-hero-slab__header {
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .lm-hero-pipeline {
+                margin: 0;
+                padding: 0;
+                list-style: none;
+                display: grid;
+                gap: 0.75rem;
+            }
+
+            .lm-hero-pipeline__item {
+                display: flex;
+                align-items: center;
+                justify-content: space-between;
+                gap: 1rem;
+                padding: 0.75rem 1rem;
+                border-radius: 12px;
+                background: rgba(50, 72, 173, 0.08);
+                color: var(--lm-neutral-900);
+            }
+
+            .lm-hero-pipeline__item.is-active {
+                background: rgba(63, 151, 213, 0.16);
+                box-shadow: inset 0 0 0 1px rgba(50, 72, 173, 0.2);
+            }
+
+            .lm-hero-pipeline__stage {
+                display: inline-flex;
+                align-items: center;
+                gap: 0.65rem;
+                font-weight: 600;
+            }
+
+            .lm-hero-pipeline__dot {
+                width: 10px;
+                height: 10px;
+                border-radius: 50%;
+                background: var(--lm-brand-700);
+                box-shadow: 0 0 0 4px rgba(50, 72, 173, 0.18);
+            }
+
+            .lm-hero-pipeline__item.is-active .lm-hero-pipeline__dot {
+                background: var(--lm-brand-600);
+                box-shadow: 0 0 0 4px rgba(63, 151, 213, 0.3);
+            }
+
+            .lm-hero-pipeline__meta {
+                font-size: 0.85rem;
+                color: var(--lm-neutral-600);
             }
 
             .lm-hero-media {
