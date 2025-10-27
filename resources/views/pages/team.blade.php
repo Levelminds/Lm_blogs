@@ -22,13 +22,13 @@
 
     <section class="lm-section lm-section--light">
         <div class="container">
-            <div class="lm-split">
-                <div class="lm-stack">
+            <div class="lm-split align-items-start">
+                <div class="lm-stack text-start">
                     <span class="lm-eyebrow">Our story</span>
                     <h2>We started with a classroom problem</h2>
                     <p class="lm-lead">LevelMinds began when Company leaders and teachers told us that hiring felt complicated and opaque. We built a system that keeps context, trust, and collaboration at the centre of every step.</p>
                 </div>
-                <div class="lm-timeline">
+                <div class="lm-timeline text-start">
                     <div class="lm-timeline-item" data-year="2024">
                         <h3>Idea sparks in Delhi</h3>
                         <p>Varun Chamoli and Amrit Raj Verma partnered with educators to map the hiring frustrations they faced across Educational Institutes.</p>
@@ -81,31 +81,6 @@
                         <a class="btn btn-outline-primary btn-sm" href="https://www.linkedin.com/in/knownfreak/" target="_blank" rel="noopener">LinkedIn</a>
                     </div>
                 </article>
-            </div>
-        </div>
-    </section>
-
-    <section class="lm-section lm-section--muted">
-        <div class="container">
-            <div class="lm-split">
-                <div class="lm-card">
-                    <h3>Advisors and partners</h3>
-                    <p>We collaborate with Educational Institutes groups, teacher communities, and industry mentors to evolve our hiring playbooks.</p>
-                    <ul class="lm-list-check">
-                        <li>Curriculum leaders and principals</li>
-                        <li>Talent strategists across India</li>
-                        <li>Technology and security experts</li>
-                    </ul>
-                </div>
-                <div class="lm-card lm-card--outline">
-                    <h3>What drives us</h3>
-                    <p>We believe great classrooms start with empowered teachers, supportive Educational Institutes, and hiring journeys built on trust.</p>
-                    <ul class="lm-list-check">
-                        <li>Access and equity in hiring</li>
-                        <li>Transparency at every stage</li>
-                        <li>Long-term Educational Institute-Teacher fit</li>
-                    </ul>
-                </div>
             </div>
         </div>
     </section>

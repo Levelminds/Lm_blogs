@@ -26,35 +26,58 @@
                 <div class="lm-card">
                     <h2>Send us a message</h2>
                     <p class="lm-lead">Let us know how we can help. Share as much context as possible so our team can tailor the next steps.</p>
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;">
-                        <input type="hidden" name="lm_contact" value="1" />
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <p class="mb-1 fw-semibold">Please fix the following:</p>
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="{{ route('contact.submit') }}" class="lm-form">
+                        @csrf
                         <div class="lm-field">
-                            <label for="name">Full Name *</label>
-                            <input id="name" name="name" type="text" required>
+                            <label for="contact-name">Full Name *</label>
+                            <input id="contact-name" name="name" type="text" value="{{ old('name') }}" required>
+                            @error('name')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="lm-field-group two">
                             <div class="lm-field">
-                                <label for="email">Email *</label>
-                                <input id="email" name="email" type="email" required>
+                                <label for="contact-email">Email *</label>
+                                <input id="contact-email" name="email" type="email" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="lm-field">
-                                <label for="subject">Subject</label>
-                                <input id="subject" name="subject" type="text" placeholder="General inquiry">
+                                <label for="contact-subject">Subject</label>
+                                <input id="contact-subject" name="subject" type="text" value="{{ old('subject') }}" placeholder="General inquiry">
+                                @error('subject')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="lm-field">
-                            <label for="message">Message *</label>
-                            <textarea id="message" name="message" rows="6" required placeholder="Share how we can support your hiring goals"></textarea>
+                            <label for="contact-message">Message *</label>
+                            <textarea id="contact-message" name="message" rows="6" required placeholder="Share how we can support your hiring goals">{{ old('message') }}</textarea>
+                            @error('message')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary" type="submit">Send message</button>
                     </form>
                 </div>
                 <aside class="lm-contact-side">
                     <div class="lm-card">
-                        <h3>Head office</h3>
-                        <p>Delhi, India</p>
+                        <h3>Reach us directly</h3>
+                        <p>Connect with our support specialists for faster assistance.</p>
                         <ul class="lm-list-check">
                             <li>Email: <a href="mailto:support@levelminds.in">support@levelminds.in</a></li>
+                            <li>Phone: <a href="tel:+917303835892">+91 73038 35892</a></li>
                             <li>Support hours: 10 AM - 6 PM IST</li>
                         </ul>
                     </div>

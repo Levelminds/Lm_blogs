@@ -166,6 +166,15 @@
     </nav>
 
     <main>
+        @if (session('status'))
+            <div class="py-3">
+                <div class="container">
+                    <div class="alert alert-success mb-0" role="alert">
+                        {{ session('status') }}
+                    </div>
+                </div>
+            </div>
+        @endif
         @yield('content')
     </main>
 

@@ -2,8 +2,10 @@
 
 use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\BlogController;
-use App\Http\Controllers\SubscriptionController;
+use App\Http\Controllers\CareerController;
+use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LikeController;
+use App\Http\Controllers\SubscriptionController;
 
 // -------------------------------
 // Static Pages (Landing Sections)
@@ -13,8 +15,10 @@ Route::get('/', function () {
 })->name('home');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/tour', 'pages.tour')->name('tour');
-Route::view('/careers', 'pages.careers')->name('careers');
-Route::view('/contact', 'pages.contact')->name('contact');
+Route::get('/careers', [CareerController::class, 'show'])->name('careers');
+Route::post('/careers', [CareerController::class, 'submit'])->name('careers.submit');
+Route::get('/contact', [ContactController::class, 'show'])->name('contact');
+Route::post('/contact', [ContactController::class, 'submit'])->name('contact.submit');
 
 // -------------------------------
 // Blog Routes

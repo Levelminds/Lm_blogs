@@ -74,35 +74,63 @@
                     </ul>
                 </div>
                 <div class="lm-card">
-                    <form method="post" action="#" class="lm-form" onsubmit="return false;">
-                        <input type="hidden" name="lm_career" value="1" />
+                    @if ($errors->any())
+                        <div class="alert alert-danger">
+                            <p class="mb-1 fw-semibold">Please fix the following:</p>
+                            <ul class="mb-0 ps-3">
+                                @foreach ($errors->all() as $error)
+                                    <li>{{ $error }}</li>
+                                @endforeach
+                            </ul>
+                        </div>
+                    @endif
+                    <form method="post" action="{{ route('careers.submit') }}" class="lm-form">
+                        @csrf
                         <div class="lm-field-group two">
                             <div class="lm-field">
-                                <label for="fullname">Full Name *</label>
-                                <input id="fullname" name="fullname" type="text" required>
+                                <label for="career-fullname">Full Name *</label>
+                                <input id="career-fullname" name="fullname" type="text" value="{{ old('fullname') }}" required>
+                                @error('fullname')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="lm-field">
-                                <label for="email">Email *</label>
-                                <input id="email" name="email" type="email" required>
+                                <label for="career-email">Email *</label>
+                                <input id="career-email" name="email" type="email" value="{{ old('email') }}" required>
+                                @error('email')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="lm-field-group two">
                             <div class="lm-field">
-                                <label for="phone">Phone / WhatsApp</label>
-                                <input id="phone" name="phone" type="text">
+                                <label for="career-phone">Phone / WhatsApp</label>
+                                <input id="career-phone" name="phone" type="text" value="{{ old('phone') }}">
+                                @error('phone')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                             <div class="lm-field">
-                                <label for="college">College / University *</label>
-                                <input id="college" name="college" type="text" required>
+                                <label for="career-college">College / University *</label>
+                                <input id="career-college" name="college" type="text" value="{{ old('college') }}" required>
+                                @error('college')
+                                    <div class="text-danger small mt-1">{{ $message }}</div>
+                                @enderror
                             </div>
                         </div>
                         <div class="lm-field">
-                            <label for="linkedin">LinkedIn Profile</label>
-                            <input id="linkedin" name="linkedin" type="url" placeholder="https://linkedin.com/in/you">
+                            <label for="career-linkedin">LinkedIn Profile</label>
+                            <input id="career-linkedin" name="linkedin" type="url" value="{{ old('linkedin') }}" placeholder="https://linkedin.com/in/you">
+                            @error('linkedin')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <div class="lm-field">
-                            <label for="plan">How will you help teachers find opportunities?</label>
-                            <textarea id="plan" name="plan" rows="5" placeholder="Share your plan, student communities, or past experience"></textarea>
+                            <label for="career-plan">How will you help teachers find opportunities?</label>
+                            <textarea id="career-plan" name="plan" rows="5" placeholder="Share your plan, student communities, or past experience">{{ old('plan') }}</textarea>
+                            @error('plan')
+                                <div class="text-danger small mt-1">{{ $message }}</div>
+                            @enderror
                         </div>
                         <button class="btn btn-primary" type="submit">Submit application</button>
                     </form>
