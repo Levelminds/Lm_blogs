@@ -86,10 +86,10 @@
                 <div class="lm-hero-media">
                     <div class="lm-hero-ring" aria-hidden="true"></div>
                     <div class="lm-stack">
-                        <article class="lm-hero-slab" aria-label="Teacher workflow highlight">
-                            <span class="lm-badge">Teacher view</span>
-                            <h3>Track every application</h3>
-                            <p>Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
+                        <article class="lm-hero-slab text-dark" aria-label="Teacher workflow highlight" style="color: #000;">
+                            <span class="lm-badge text-dark" style="color: #000;">Teacher view</span>
+                            <h3 class="text-dark" style="color: #000;">Track every application</h3>
+                            <p class="text-dark" style="color: #000;">Follow each stage from shortlist to offer with nudges, notes, and reminders.</p>
                         </article>
                         <article class="lm-hero-slab lm-hero-slab-dark" aria-label="Educational Institute dashboard highlight">
                             <span class="lm-badge lm-badge--light">Educational Institute dashboard</span>
