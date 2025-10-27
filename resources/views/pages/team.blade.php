@@ -14,7 +14,6 @@
         ['year' => '2024', 'title' => 'Idea sparks in Delhi', 'copy' => 'Varun Chamoli and Amrit Raj Verma mapped hiring frustrations with principals and teachers across Educational Institutes.'],
         ['year' => '2024', 'title' => 'Co-designing the journey', 'copy' => 'Shadowing administrators and educators, we shaped transparent workflows that keep both sides aligned.'],
         ['year' => '2025', 'title' => 'Product leadership joins', 'copy' => 'Rahul Sharma turned playbooks into a secure, collaborative platform for hiring teams.'],
-        ['year' => '2025', 'title' => 'Advisory council expands', 'copy' => 'Curriculum leaders and talent strategists help refine our evaluation models and impact metrics.'],
     ];
 
     $leadership = [
@@ -81,9 +80,12 @@
                 </div>
                 <div class="lm-timeline" aria-label="LevelMinds milestones">
                     @foreach ($timeline as $item)
-                        <div class="lm-timeline-item" data-year="{{ $item['year'] }}">
-                            <h3>{{ $item['title'] }}</h3>
-                            <p>{{ $item['copy'] }}</p>
+                        <div class="lm-timeline-item">
+                            <span class="lm-timeline-year">{{ $item['year'] }}</span>
+                            <div class="lm-timeline-body">
+                                <h3>{{ $item['title'] }}</h3>
+                                <p>{{ $item['copy'] }}</p>
+                            </div>
                         </div>
                     @endforeach
                 </div>

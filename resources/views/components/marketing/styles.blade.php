@@ -504,36 +504,49 @@
 
             .lm-timeline {
                 display: grid;
-                gap: 1.5rem;
+                gap: 1.75rem;
+                position: relative;
+            }
+
+            .lm-timeline::before {
+                content: '';
+                position: absolute;
+                left: 1rem;
+                top: 0;
+                bottom: 0;
+                width: 2px;
+                background: var(--lm-neutral-200);
             }
 
             .lm-timeline-item {
                 position: relative;
                 padding-left: 2.75rem;
+                display: grid;
+                gap: 0.75rem;
             }
 
-            .lm-timeline-item::before {
-                content: '';
-                position: absolute;
-                left: 1rem;
-                top: 0.4rem;
-                bottom: 0.4rem;
-                width: 2px;
-                background: var(--lm-neutral-200);
-            }
-
-            .lm-timeline-item::after {
-                content: attr(data-year);
-                position: absolute;
-                left: 0;
-                top: 0;
+            .lm-timeline-year {
+                display: inline-flex;
+                align-self: start;
                 background: var(--lm-brand-700);
                 color: #fff;
                 font-weight: 700;
                 font-size: 0.85rem;
                 padding: 0.35rem 0.75rem;
                 border-radius: 999px;
-                transform: translateY(-40%);
+                letter-spacing: 0.04em;
+                text-transform: uppercase;
+                position: relative;
+                z-index: 1;
+            }
+
+            .lm-timeline-body {
+                display: grid;
+                gap: 0.5rem;
+            }
+
+            .lm-timeline-body h3 {
+                margin-bottom: 0;
             }
 
             .lm-cta-banner {
