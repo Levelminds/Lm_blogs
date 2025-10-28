@@ -17,6 +17,7 @@ class CategorySeeder extends Seeder
             ['name' => 'MBA', 'accent_color' => '#111c4d'],
             ['name' => 'General', 'accent_color' => '#5c6780'],
             ['name' => 'Digital Marketing', 'accent_color' => '#445068'],
+            ['name' => "From Leader's Desk", 'accent_color' => '#2a3c90'],
         ];
 
         foreach ($categories as $category) {
