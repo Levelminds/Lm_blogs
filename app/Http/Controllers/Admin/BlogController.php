@@ -23,7 +23,7 @@ class BlogController extends Controller
 
     public function create()
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = $this->getCategoryOptions();
 
         return view('admin.blogs.create', compact('categories'));
     }
@@ -77,7 +77,7 @@ class BlogController extends Controller
 
     public function edit(Blog $blog)
     {
-        $categories = Category::orderBy('name')->get();
+        $categories = $this->getCategoryOptions();
 
         return view('admin.blogs.edit', compact('blog', 'categories'));
     }
@@ -217,6 +217,13 @@ class BlogController extends Controller
         }
 
         return $validated;
+    }
+
+    protected function getCategoryOptions()
+    {
+        return Category::query()
+            ->orderBy('name')
+            ->get(['id', 'name']);
     }
 
     protected function generateUniqueSlug(string $title, ?int $ignoreId = null): string
