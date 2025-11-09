@@ -1,0 +1,16 @@
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+# ------------------------------------------------
+# ✅ Allow static files like /storage/... to load
+# ------------------------------------------------
+RewriteCond %{REQUEST_URI} ^/storage/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# ------------------------------------------------
+# ✅ Laravel default front controller
+# ------------------------------------------------
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]

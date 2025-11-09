@@ -1,0 +1,12 @@
+Options +FollowSymLinks -Indexes
+RewriteEngine On
+
+# Allow direct access to storage files
+RewriteCond %{REQUEST_URI} ^/storage/
+RewriteCond %{REQUEST_FILENAME} -f
+RewriteRule ^ - [L]
+
+# Laravel front controller
+RewriteCond %{REQUEST_FILENAME} !-d
+RewriteCond %{REQUEST_FILENAME} !-f
+RewriteRule ^ index.php [L]
