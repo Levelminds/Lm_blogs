@@ -13,7 +13,11 @@ class PageTemplateController extends Controller
     public function index(): JsonResponse
     {
         $templates = PageTemplate::query()
-            ->with(['theme:id,name', 'sections.blocks'])
+            ->with([
+                'theme:id,name',
+                'sections.blocks',
+                'sections.backgroundMedia',
+            ])
             ->orderByDesc('updated_at')
             ->get();
 
@@ -29,14 +33,18 @@ class PageTemplateController extends Controller
         $template = PageTemplate::query()->create($data);
 
         return response()->json(
-            $template->load(['theme:id,name', 'sections.blocks']),
+            $template->load([
+                'theme:id,name',
+                'sections.blocks',
+                'sections.backgroundMedia',
+            ]),
             201
         );
     }
 
     public function show(PageTemplate $template): JsonResponse
     {
-        $template->load(['theme', 'sections.blocks']);
+        $template->load(['theme', 'sections.blocks', 'sections.backgroundMedia']);
 
         return response()->json($template);
     }
@@ -53,7 +61,9 @@ class PageTemplateController extends Controller
         $template->fill($data);
         $template->save();
 
-        return response()->json($template->fresh(['theme', 'sections.blocks']));
+        return response()->json(
+            $template->fresh(['theme', 'sections.blocks', 'sections.backgroundMedia'])
+        );
     }
 
     public function destroy(PageTemplate $template): JsonResponse
@@ -71,6 +81,8 @@ class PageTemplateController extends Controller
             'updated_by' => auth('admin')->id(),
         ]);
 
-        return response()->json($template->fresh(['theme', 'sections.blocks']));
+        return response()->json(
+            $template->fresh(['theme', 'sections.blocks', 'sections.backgroundMedia'])
+        );
     }
 }
