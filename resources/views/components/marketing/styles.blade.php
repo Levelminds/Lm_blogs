@@ -1018,6 +1018,95 @@
                 background: var(--lm-neutral-100);
                 color: var(--lm-neutral-600);
             }
-        </style>
+        
+            .builder-dynamic-content {
+                margin-top: clamp(2.5rem, 6vw, 4rem);
+            }
+
+            .builder-template {
+                display: grid;
+                gap: clamp(2.5rem, 6vw, 4rem);
+            }
+
+            .builder-section {
+                border-radius: 32px;
+                background: rgba(255, 255, 255, 0.94);
+                box-shadow: 0 24px 60px -40px rgba(13, 20, 36, 0.28);
+            }
+
+            .builder-block--image img {
+                border-radius: 24px;
+                box-shadow: var(--lm-shadow-md);
+            }
+
+            .builder-block--image figcaption {
+                margin-top: 0.75rem;
+                text-align: center;
+                font-size: 0.95rem;
+                color: var(--lm-neutral-600);
+            }
+
+            .builder-block--gallery {
+                display: grid;
+                gap: 1.5rem;
+                grid-template-columns: repeat(var(--builder-gallery-columns, 3), minmax(0, 1fr));
+            }
+
+            .builder-gallery-item {
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: var(--lm-shadow-sm);
+                background: #fff;
+            }
+
+            .builder-gallery-item figcaption {
+                padding: 0.75rem 1rem;
+                font-size: 0.9rem;
+                color: var(--lm-neutral-600);
+                background: rgba(255, 255, 255, 0.94);
+            }
+
+            .builder-block--slider {
+                overflow-x: auto;
+                scroll-snap-type: x mandatory;
+                display: flex;
+                gap: 1.25rem;
+                padding-bottom: 1rem;
+            }
+
+            .builder-block--slider::-webkit-scrollbar {
+                height: 8px;
+            }
+
+            .builder-block--slider::-webkit-scrollbar-thumb {
+                background: rgba(50, 72, 173, 0.35);
+                border-radius: 999px;
+            }
+
+            .builder-slider-track {
+                display: flex;
+                gap: 1.25rem;
+            }
+
+            .builder-slider-slide {
+                min-width: clamp(240px, 60vw, 420px);
+                scroll-snap-align: center;
+                border-radius: 20px;
+                overflow: hidden;
+                box-shadow: var(--lm-shadow-md);
+                background: #fff;
+            }
+
+            .builder-slider-slide figcaption {
+                padding: 0.75rem 1rem;
+                font-size: 0.95rem;
+                color: var(--lm-neutral-600);
+            }
+
+            .builder-block--fallback pre {
+                max-height: 280px;
+            }
+</style>
     @endpush
+
 @endonce

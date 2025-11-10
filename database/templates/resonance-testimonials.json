@@ -1,0 +1,88 @@
+{
+  "name": "Resonance Testimonials",
+  "slug": "resonance-testimonials",
+  "status": "draft",
+  "layout_variant": "testimonials",
+  "description": "Carousel-ready testimonial layout inspired by Flowbite's testimonial blocks with cards, avatars, and rating stars.",
+  "theme": {
+    "name": "Default"
+  },
+  "meta": {
+    "source": "https://flowbite.com/blocks/marketing/testimonial/",
+    "structure": [
+      "Section heading",
+      "Responsive testimonial cards",
+      "Quote, author details, rating icons"
+    ],
+    "assets": [
+      {
+        "key": "testimonial-avatars",
+        "type": "image",
+        "description": "Circular avatars, 160x160, soft shadow"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Testimonials",
+      "handle": "testimonials",
+      "type": "testimonial-grid",
+      "position": 1,
+      "settings": {
+        "columns": 3,
+        "padding": "py-20",
+        "background": {
+          "color": "#0f172a"
+        },
+        "card": {
+          "background": "#1f2937",
+          "text_tone": "light",
+          "shadow": "lg"
+        }
+      },
+      "content": {
+        "eyebrow": "Customer stories",
+        "heading": "Resonating outcomes from teams using the builder",
+        "body": "Modeled after Flowbite testimonial cards with ratings and short-form quotes."
+      },
+      "blocks": [
+        {
+          "type": "testimonial",
+          "title": "Testimonial",
+          "position": 1,
+          "content": {
+            "quote": "“The prebuilt templates let us re-launch our enterprise microsites in a week. Builder governance made approvals effortless.”",
+            "name": "Danielle Marks",
+            "role": "VP Demand Generation, Polaris",
+            "avatar": null,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "title": "Testimonial",
+          "position": 2,
+          "content": {
+            "quote": "“Theme tokens synced instantly across 14 locales. We can ship new hero concepts during the morning standup.”",
+            "name": "Ibrahim Khan",
+            "role": "Head of Growth, Stratus",
+            "avatar": null,
+            "rating": 5
+          }
+        },
+        {
+          "type": "testimonial",
+          "title": "Testimonial",
+          "position": 3,
+          "content": {
+            "quote": "“Having features, team, and testimonial patterns ready to go saved our launch cycle and kept the brand intact.”",
+            "name": "Maya Thornton",
+            "role": "Director of Brand, HorizonAI",
+            "avatar": null,
+            "rating": 4
+          }
+        }
+      ]
+    }
+  ]
+}

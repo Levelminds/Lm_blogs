@@ -258,6 +258,14 @@
         </div>
     </section>
 
+    @isset($builderTemplate)
+        <section class="lm-section">
+            <div class="container builder-dynamic-content">
+                <x-page-builder.template :template="$builderTemplate" />
+            </div>
+        </section>
+    @endisset
+
     <section class="lm-section lm-section--muted">
         <div class="container">
             <div class="lm-cta-banner">

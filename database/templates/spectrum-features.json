@@ -1,0 +1,146 @@
+{
+  "name": "Spectrum Feature Grid",
+  "slug": "spectrum-feature-grid",
+  "status": "draft",
+  "layout_variant": "feature-cards",
+  "description": "Multi-column feature grid inspired by HyperUI's marketing feature blocks, pairing icon cards with supporting copy.",
+  "theme": {
+    "name": "Default"
+  },
+  "meta": {
+    "source": "https://www.hyperui.dev/components/marketing/features",
+    "structure": [
+      "Introductory headline",
+      "Compact supporting paragraph",
+      "Three-by-two responsive feature cards",
+      "Secondary call-to-action strip"
+    ],
+    "assets": [
+      {
+        "key": "feature-icons",
+        "type": "svg",
+        "description": "Six monochrome line icons"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Overview",
+      "handle": "overview",
+      "type": "content",
+      "position": 1,
+      "settings": {
+        "alignment": "left",
+        "padding": "py-16",
+        "background": {
+          "color": "#ffffff"
+        }
+      },
+      "content": {
+        "eyebrow": "Why teams choose LevelMinds",
+        "heading": "Design once, orchestrate everywhere",
+        "body": "Spectrum brings the crisp card layout from HyperUI into the builder so feature highlights stay readable across breakpoints."
+      }
+    },
+    {
+      "title": "Feature Grid",
+      "handle": "feature-grid",
+      "type": "feature-grid",
+      "position": 2,
+      "settings": {
+        "columns": 3,
+        "icon_style": "solid",
+        "background": {
+          "color": "#f8fafc"
+        }
+      },
+      "content": {
+        "note": "Cards mirror HyperUI layout"
+      },
+      "blocks": [
+        {
+          "type": "feature-card",
+          "title": "Visual Canvas",
+          "position": 1,
+          "content": {
+            "icon": "paint-brush",
+            "title": "Visual Canvas",
+            "description": "Drag sections, snap to a responsive grid, and preview tablet and mobile instantly."
+          }
+        },
+        {
+          "type": "feature-card",
+          "title": "Reusable Patterns",
+          "position": 2,
+          "content": {
+            "icon": "layers",
+            "title": "Reusable Patterns",
+            "description": "Save branded sections as patterns and reuse them across every campaign."
+          }
+        },
+        {
+          "type": "feature-card",
+          "title": "Dynamic Content",
+          "position": 3,
+          "content": {
+            "icon": "sparkles",
+            "title": "Dynamic Content",
+            "description": "Target content blocks to customer segments and sync with product data."
+          }
+        },
+        {
+          "type": "feature-card",
+          "title": "Governance",
+          "position": 4,
+          "content": {
+            "icon": "shield-check",
+            "title": "Governance",
+            "description": "Route approvals, capture notes, and audit changes automatically."
+          }
+        },
+        {
+          "type": "feature-card",
+          "title": "Performance",
+          "position": 5,
+          "content": {
+            "icon": "cpu-chip",
+            "title": "Performance",
+            "description": "Export production-ready HTML that passes Core Web Vitals out of the box."
+          }
+        },
+        {
+          "type": "feature-card",
+          "title": "Analytics",
+          "position": 6,
+          "content": {
+            "icon": "chart-bar",
+            "title": "Analytics",
+            "description": "Measure experiments with inline reporting and share live dashboards."
+          }
+        }
+      ]
+    },
+    {
+      "title": "Call to action",
+      "handle": "cta",
+      "type": "cta",
+      "position": 3,
+      "settings": {
+        "background": {
+          "color": "#1f2937"
+        },
+        "text": {
+          "tone": "light"
+        }
+      },
+      "content": {
+        "heading": "Bring these feature blocks into your next launch",
+        "body": "Import Spectrum to start with balanced cards, or mix and match cards in the builder UI.",
+        "primary_cta": {
+          "label": "Import template",
+          "url": "/admin/templates"
+        }
+      }
+    }
+  ]
+}
