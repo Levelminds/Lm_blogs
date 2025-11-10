@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>LevelMinds Admin - @yield('title')</title>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
     <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
     <link rel="icon" type="image/svg+xml" href="{{ asset('images/branding/favicon.svg') }}">
     @stack('styles')
@@ -54,6 +55,7 @@
             <span class="brand-pill">LevelMinds Admin</span>
         </h4>
         <a href="{{ route('admin.dashboard') }}" class="{{ request()->routeIs('admin.dashboard') ? 'active' : '' }}">Dashboard</a>
+        <a href="{{ route('admin.builder') }}" class="{{ request()->routeIs('admin.builder') || request()->routeIs('admin.page-templates.*') || request()->routeIs('admin.page-sections.*') || request()->routeIs('admin.page-blocks.*') || request()->routeIs('admin.theme.*') ? 'active' : '' }}">Website Builder</a>
         <a href="{{ route('admin.blogs.index') }}" class="{{ request()->routeIs('admin.blogs.*') ? 'active' : '' }}">Blogs</a>
         <a href="{{ route('admin.seo.edit') }}" class="{{ request()->routeIs('admin.seo.*') ? 'active' : '' }}">SEO Settings</a>
         {{-- <a href="{{ route('admin.categories.index') }}" class="{{ request()->routeIs('admin.categories.*') ? 'active' : '' }}">Categories</a> --}}
@@ -71,7 +73,10 @@
         <nav class="navbar px-4">
             <div class="d-flex justify-content-between w-100">
                 <h5 class="mb-0">@yield('page-title')</h5>
-                <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm" target="_blank">View Site</a>
+                <div class="d-flex gap-2">
+                    <a href="{{ route('admin.builder') }}" class="btn btn-primary btn-sm">Open Builder</a>
+                    <a href="{{ url('/') }}" class="btn btn-outline-primary btn-sm" target="_blank">View Site</a>
+                </div>
             </div>
         </nav>
 
