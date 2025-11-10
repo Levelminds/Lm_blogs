@@ -22,13 +22,14 @@
 
     <section class="grid lg:grid-cols-3 gap-8">
         <div class="lg:col-span-2 space-y-6">
+            <div id="builder-feedback" class="hidden rounded-lg border px-4 py-3 text-sm font-medium" role="status" aria-live="assertive"></div>
             <div class="rounded-2xl border border-slate-200 bg-white shadow-sm">
                 <div class="border-b border-slate-200 px-6 py-4 flex items-center justify-between">
                     <div>
                         <h2 class="text-lg font-semibold text-slate-900">Templates</h2>
                         <p class="text-sm text-slate-600">Manage reusable layouts. Select one to inspect its sections and blocks.</p>
                     </div>
-                    <span class="text-xs font-medium text-slate-500">{{ $templates->count() }} templates</span>
+                    <span class="text-xs font-medium text-slate-500" id="builder-template-count">{{ $templates->count() }} templates</span>
                 </div>
                 <div class="divide-y divide-slate-100" id="builder-template-list">
                     @forelse($templates as $template)
@@ -104,6 +105,7 @@
                 <h3 class="mt-4 text-lg font-semibold text-slate-800">Select a template to begin editing</h3>
                 <p class="mt-2 text-sm text-slate-600">Sections and blocks will appear here once a template is active. Drag, reorder, and customise each block directly from the builder sidebar.</p>
             </div>
+            <div id="builder-canvas" class="hidden space-y-5" aria-live="polite"></div>
         </div>
 
         <aside class="space-y-6">
