@@ -1,0 +1,136 @@
+{
+  "name": "Pulse Team Spotlight",
+  "slug": "pulse-team-spotlight",
+  "status": "draft",
+  "layout_variant": "team-grid",
+  "description": "Human-centered team grid inspired by Tailwind Elements' team section with layered cards and social links.",
+  "theme": {
+    "name": "Default"
+  },
+  "meta": {
+    "source": "https://tailwind-elements.com/docs/standard/components/team/",
+    "structure": [
+      "Section heading with subcopy",
+      "Two-row responsive team grid",
+      "Card with avatar, name, role, and social icons"
+    ],
+    "assets": [
+      {
+        "key": "team-headshots",
+        "type": "image",
+        "description": "Square portraits, 400x400, neutral background"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Team",
+      "handle": "team",
+      "type": "team-grid",
+      "position": 1,
+      "settings": {
+        "columns": 3,
+        "padding": "py-20",
+        "background": {
+          "color": "#ffffff"
+        },
+        "card": {
+          "background": "#f1f5f9",
+          "shadow": "xl"
+        }
+      },
+      "content": {
+        "eyebrow": "Leadership",
+        "heading": "Meet the people scaling LevelMinds",
+        "body": "Each card follows the Tailwind Elements pattern with room for social icons and succinct bios."
+      },
+      "blocks": [
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 1,
+          "content": {
+            "name": "Alex Rivera",
+            "role": "Director of Product",
+            "bio": "Sets the vision for the builder and keeps cross-functional teams shipping weekly.",
+            "avatar": null,
+            "social": {
+              "linkedin": "https://linkedin.com/in/alex-rivera",
+              "twitter": "https://twitter.com/alexbuilds"
+            }
+          }
+        },
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 2,
+          "content": {
+            "name": "Priya Desai",
+            "role": "Head of Customer Success",
+            "bio": "Partners with enterprise teams to turn template strategy into measurable growth.",
+            "avatar": null,
+            "social": {
+              "linkedin": "https://linkedin.com/in/priya-desai"
+            }
+          }
+        },
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 3,
+          "content": {
+            "name": "Miles Chen",
+            "role": "Principal Engineer",
+            "bio": "Architects the rendering engine and performance tooling that powers every page.",
+            "avatar": null,
+            "social": {
+              "github": "https://github.com/mileschen"
+            }
+          }
+        },
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 4,
+          "content": {
+            "name": "Leah Gomez",
+            "role": "Lead Designer",
+            "bio": "Owns the design system and ensures templates stay on-brand from typography to motion.",
+            "avatar": null,
+            "social": {
+              "dribbble": "https://dribbble.com/leahg"
+            }
+          }
+        },
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 5,
+          "content": {
+            "name": "Jordan Blake",
+            "role": "Lifecycle Marketing",
+            "bio": "Turns builder insights into lifecycle journeys that convert trials into advocates.",
+            "avatar": null,
+            "social": {
+              "linkedin": "https://linkedin.com/in/jordan-blake"
+            }
+          }
+        },
+        {
+          "type": "team-member",
+          "title": "Team member",
+          "position": 6,
+          "content": {
+            "name": "Sofia Park",
+            "role": "Data Science Lead",
+            "bio": "Analyzes template performance and feeds predictive recommendations back into the builder.",
+            "avatar": null,
+            "social": {
+              "linkedin": "https://linkedin.com/in/sofia-park"
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

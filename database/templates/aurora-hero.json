@@ -1,0 +1,103 @@
+{
+  "name": "Aurora Hero Launch",
+  "slug": "aurora-hero-launch",
+  "status": "draft",
+  "layout_variant": "hero-centered",
+  "description": "Hero-first landing layout inspired by Flowbite's marketing hero block, pairing bold typography with a gradient backdrop and social proof.",
+  "theme": {
+    "name": "Default"
+  },
+  "meta": {
+    "source": "https://flowbite.com/blocks/marketing/hero/",
+    "structure": [
+      "Hero headline and supporting copy",
+      "Dual call-to-action buttons",
+      "Metric pills for social proof",
+      "Logo wall with trusted brands"
+    ],
+    "assets": [
+      {
+        "key": "hero-background",
+        "type": "image",
+        "description": "Abstract gradient or technology background, 1600x900 minimum"
+      },
+      {
+        "key": "logo-wall",
+        "type": "svg",
+        "description": "Monochrome partner logos (5-6 marks)"
+      }
+    ]
+  },
+  "sections": [
+    {
+      "title": "Hero",
+      "handle": "hero",
+      "type": "hero",
+      "position": 1,
+      "settings": {
+        "alignment": "center",
+        "padding": "py-24",
+        "background": {
+          "color": "#0f172a",
+          "gradient": "from-slate-900 via-slate-800 to-slate-900",
+          "accent_glow": "#38bdf8"
+        },
+        "text": {
+          "size": "max-w-3xl",
+          "tone": "light"
+        }
+      },
+      "content": {
+        "eyebrow": "Platform Launchpad",
+        "heading": "Launch intelligent experiences without waiting on engineering",
+        "subheading": "Ship new campaigns in hours with reusable layouts, on-brand design tokens, and automated approvals.",
+        "primary_cta": {
+          "label": "Start building",
+          "url": "/builder"
+        },
+        "secondary_cta": {
+          "label": "View sample site",
+          "url": "/tour"
+        },
+        "note": "Inspired by Flowbite hero block"
+      },
+      "blocks": [
+        {
+          "type": "stat-pill",
+          "title": "Social proof",
+          "position": 1,
+          "content": {
+            "items": [
+              {
+                "label": "Teams scaling with LevelMinds",
+                "value": "320+"
+              },
+              {
+                "label": "Avg. launch time",
+                "value": "6 days"
+              },
+              {
+                "label": "Conversion lift",
+                "value": "+28%"
+              }
+            ]
+          }
+        },
+        {
+          "type": "logo-strip",
+          "title": "Trusted by",
+          "position": 2,
+          "content": {
+            "items": [
+              {"label": "Nimbus"},
+              {"label": "Northwind"},
+              {"label": "Skyforge"},
+              {"label": "Summit"},
+              {"label": "Sierra"}
+            ]
+          }
+        }
+      ]
+    }
+  ]
+}
