@@ -23,6 +23,10 @@ class Media extends Model
         'meta' => 'array',
     ];
 
+    protected $appends = [
+        'url',
+    ];
+
     public function getUrlAttribute(): string
     {
         return \Storage::disk($this->disk)->url($this->path);

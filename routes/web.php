@@ -7,6 +7,7 @@ use App\Http\Controllers\ContactController;
 use App\Http\Controllers\LikeController;
 use App\Http\Controllers\StorageAssetController;
 use App\Http\Controllers\SubscriptionController;
+use App\Models\PageTemplate;
 
 Route::get('/storage/{path}', StorageAssetController::class)
     ->where('path', '.*')
@@ -16,7 +17,15 @@ Route::get('/storage/{path}', StorageAssetController::class)
 // Static Pages (Landing Sections)
 // -------------------------------
 Route::get('/', function () {
-    return view('pages.home');
+    $builderTemplate = PageTemplate::query()
+        ->published()
+        ->where('slug', 'homepage')
+        ->with(['sections.blocks', 'sections.backgroundMedia'])
+        ->first();
+
+    return view('pages.home', [
+        'builderTemplate' => $builderTemplate,
+    ]);
 })->name('home');
 Route::view('/team', 'pages.team')->name('team');
 Route::view('/tour', 'pages.tour')->name('tour');

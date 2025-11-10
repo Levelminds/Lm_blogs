@@ -11,7 +11,11 @@ class PageBuilderController extends Controller
     public function index()
     {
         $templates = PageTemplate::query()
-            ->with(['theme:id,name', 'sections.blocks'])
+            ->with([
+                'theme:id,name',
+                'sections.blocks',
+                'sections.backgroundMedia',
+            ])
             ->orderBy('name')
             ->get();
 
@@ -20,6 +24,7 @@ class PageBuilderController extends Controller
         return view('admin.page-builder', [
             'templates' => $templates,
             'activeTheme' => $activeTheme,
+            'blockSchemas' => config('page-builder.blocks'),
         ]);
     }
 }
